@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { ArrowRight, Code2, Palette, Globe, Smartphone, BarChart3, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoImage from "@assets/MJDM_copy_1768070340475.png";
-import logoVideo from "@assets/MJDM_1768071859399.mp4";
+import logoVideo from "@assets/MJGLogo_1768071682999.mp4";
 
 const services = [
   {
