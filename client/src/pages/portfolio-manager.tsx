@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Plus, Edit2, Trash2, Eye, EyeOff, ExternalLink, Upload, X } from "lucide-react";
+import { Plus, Edit2, Trash2, Eye, EyeOff, ExternalLink, Upload, X, Video } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -64,7 +64,9 @@ export default function PortfolioManager() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingProject, setEditingProject] = useState<PortfolioProject | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [videoPreview, setVideoPreview] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const videoInputRef = useRef<HTMLInputElement>(null);
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -97,12 +99,44 @@ export default function PortfolioManager() {
     }
   };
 
+  const handleVideoUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    if (!file.type.startsWith("video/")) {
+      toast({ title: "Invalid file", description: "Please upload a video file.", variant: "destructive" });
+      return;
+    }
+
+    if (file.size > 10 * 1024 * 1024) {
+      toast({ title: "File too large", description: "Please upload a video under 10MB.", variant: "destructive" });
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const base64String = reader.result as string;
+      setVideoPreview(base64String);
+      form.setValue("videoUrl", base64String);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const clearVideo = () => {
+    setVideoPreview(null);
+    form.setValue("videoUrl", "");
+    if (videoInputRef.current) {
+      videoInputRef.current.value = "";
+    }
+  };
+
   const form = useForm<InsertPortfolioProject>({
     resolver: zodResolver(insertPortfolioProjectSchema),
     defaultValues: {
       title: "",
       description: "",
       imageUrl: "",
+      videoUrl: "",
       projectUrl: "",
       category: "",
       isVisible: true,
@@ -169,14 +203,19 @@ export default function PortfolioManager() {
       title: "",
       description: "",
       imageUrl: "",
+      videoUrl: "",
       projectUrl: "",
       category: "",
       isVisible: true,
       displayOrder: 0,
     });
     setImagePreview(null);
+    setVideoPreview(null);
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
+    }
+    if (videoInputRef.current) {
+      videoInputRef.current.value = "";
     }
     setEditingProject(null);
     setIsDialogOpen(false);
@@ -188,12 +227,14 @@ export default function PortfolioManager() {
       title: project.title,
       description: project.description || "",
       imageUrl: project.imageUrl || "",
+      videoUrl: project.videoUrl || "",
       projectUrl: project.projectUrl || "",
       category: project.category || "",
       isVisible: project.isVisible,
       displayOrder: project.displayOrder,
     });
     setImagePreview(project.imageUrl || null);
+    setVideoPreview(project.videoUrl || null);
     setIsDialogOpen(true);
   };
 
@@ -329,6 +370,59 @@ export default function PortfolioManager() {
                     />
                     <FormField
                       control={form.control}
+                      name="videoUrl"
+                      render={() => (
+                        <FormItem>
+                          <FormLabel>Project Video</FormLabel>
+                          <FormControl>
+                            <div className="space-y-3">
+                              <input
+                                ref={videoInputRef}
+                                type="file"
+                                accept="video/*"
+                                onChange={handleVideoUpload}
+                                className="hidden"
+                                data-testid="input-project-video-file"
+                              />
+                              {videoPreview ? (
+                                <div className="relative">
+                                  <video
+                                    src={videoPreview}
+                                    className="w-full h-32 object-contain rounded-lg border bg-muted"
+                                    controls
+                                  />
+                                  <Button
+                                    type="button"
+                                    variant="outline"
+                                    size="icon"
+                                    className="absolute top-2 right-2 h-7 w-7 bg-background"
+                                    onClick={clearVideo}
+                                    data-testid="button-clear-video"
+                                  >
+                                    <X className="h-4 w-4" />
+                                  </Button>
+                                </div>
+                              ) : (
+                                <Button
+                                  type="button"
+                                  variant="outline"
+                                  className="w-full h-24 border-dashed flex flex-col gap-2"
+                                  onClick={() => videoInputRef.current?.click()}
+                                  data-testid="button-upload-video"
+                                >
+                                  <Video className="h-6 w-6 text-muted-foreground" />
+                                  <span className="text-sm text-muted-foreground">Click to upload video</span>
+                                  <span className="text-xs text-muted-foreground">Max 10MB</span>
+                                </Button>
+                              )}
+                            </div>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
                       name="projectUrl"
                       render={({ field }) => (
                         <FormItem>
@@ -404,7 +498,17 @@ export default function PortfolioManager() {
               <Card key={project.id} className="border-card-border" data-testid={`card-project-${project.id}`}>
                 <CardContent className="p-6">
                   <div className="flex flex-col sm:flex-row sm:items-start gap-4">
-                    {project.imageUrl ? (
+                    {project.videoUrl ? (
+                      <div className="w-full sm:w-32 h-32 sm:h-24 bg-muted rounded-lg overflow-hidden flex items-center justify-center">
+                        <video
+                          src={project.videoUrl}
+                          className="max-w-full max-h-full object-contain"
+                          muted
+                          loop
+                          playsInline
+                        />
+                      </div>
+                    ) : project.imageUrl ? (
                       <div className="w-full sm:w-32 h-32 sm:h-24 bg-muted rounded-lg overflow-hidden flex items-center justify-center">
                         <img
                           src={project.imageUrl}
@@ -414,7 +518,7 @@ export default function PortfolioManager() {
                       </div>
                     ) : (
                       <div className="w-full sm:w-32 h-32 sm:h-24 bg-muted rounded-lg flex items-center justify-center">
-                        <span className="text-muted-foreground text-xs">No image</span>
+                        <span className="text-muted-foreground text-xs">No media</span>
                       </div>
                     )}
                     

@@ -59,7 +59,18 @@ export default function Portfolio() {
                 className="overflow-hidden hover-elevate border-card-border group"
                 data-testid={`card-portfolio-${project.id}`}
               >
-                {project.imageUrl ? (
+                {project.videoUrl ? (
+                  <div className="relative aspect-video overflow-hidden bg-muted">
+                    <video
+                      src={project.videoUrl}
+                      className="w-full h-full object-contain"
+                      controls
+                      muted
+                      loop
+                      playsInline
+                    />
+                  </div>
+                ) : project.imageUrl ? (
                   <div className="relative aspect-video overflow-hidden bg-muted">
                     <img
                       src={project.imageUrl}
@@ -69,7 +80,7 @@ export default function Portfolio() {
                   </div>
                 ) : (
                   <div className="aspect-video bg-muted flex items-center justify-center">
-                    <span className="text-muted-foreground">No image</span>
+                    <span className="text-muted-foreground">No media</span>
                   </div>
                 )}
                 <CardContent className="p-5">
