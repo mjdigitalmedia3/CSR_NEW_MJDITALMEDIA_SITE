@@ -65,3 +65,27 @@ The application supports light and dark modes via CSS variables and a ThemeProvi
 - **esbuild**: Server bundling for production
 - **tsx**: TypeScript execution for development
 - **Replit plugins**: Development banner and cartographer for Replit environment
+
+## Recent Changes (January 2026)
+
+- Added comprehensive data-testid attributes to all interactive elements and display content for automated testing
+- Enhanced PATCH /api/clients/:id endpoint with proper Zod schema validation using updateClientSchema
+- All API endpoints now validate request bodies with shared Zod schemas for type safety
+
+## Key Features
+
+1. **Landing Page**: Professional hero section with benefits overview
+2. **Lead Submission Form**: Captures contact info, project type, budget, timeline, features, and requirements
+3. **Dashboard**: Real-time statistics with charts showing lead distribution by status
+4. **Client List**: Searchable, filterable list with status badges
+5. **Client Detail**: Full client info with inline status management and delete functionality
+6. **Dark Mode**: Full theme support with toggle in header
+
+## API Endpoints
+
+- `GET /api/clients` - List all clients
+- `POST /api/clients` - Create new client (validated with insertClientSchema)
+- `GET /api/clients/:id` - Get single client
+- `PATCH /api/clients/:id` - Update client (validated with updateClientSchema)
+- `DELETE /api/clients/:id` - Delete client
+- `GET /api/stats` - Dashboard statistics
