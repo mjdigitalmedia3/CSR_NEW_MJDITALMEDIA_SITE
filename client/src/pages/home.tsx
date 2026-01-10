@@ -79,21 +79,15 @@ export default function Home() {
             </div>
             
             <div className="relative flex items-center justify-center">
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-transparent rounded-full blur-3xl" />
-              <div className="relative">
-                <div className="w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gradient-to-br from-zinc-800 to-zinc-900 border border-white/10 flex items-center justify-center overflow-hidden">
-                  <video 
-                    src={logoVideo}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-56 sm:w-72 h-auto"
-                  />
-                </div>
-                <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-primary/20 blur-2xl" />
-                <div className="absolute -top-4 -left-4 w-32 h-32 rounded-full bg-primary/10 blur-3xl" />
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-transparent blur-3xl" />
+              <video 
+                src={logoVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-80 sm:w-[450px] h-auto relative z-10"
+              />
             </div>
           </div>
         </div>
