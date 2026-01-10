@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { ArrowRight, Clock, FolderOpen, Shield, Sparkles, CheckCircle2, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import logoImage from "@assets/MJDM_copy_1768072123197.png";
 
 const benefits = [
   {
@@ -180,10 +181,7 @@ export default function Home() {
       <footer className="py-8 px-4 sm:px-6 border-t">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-              <Users className="h-4 w-4 text-primary-foreground" />
-            </div>
-            <span className="font-semibold">MJ Digital Media</span>
+            <img src={logoImage} alt="MJ Digital Media" className="h-8 w-auto" />
           </div>
           <p className="text-sm text-muted-foreground">
             Client Lead Management System
