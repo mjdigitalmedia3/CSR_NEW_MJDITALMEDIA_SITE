@@ -1,6 +1,6 @@
-import { clients, type Client, type InsertClient, type User, type InsertUser, users } from "@shared/schema";
+import { clients, type Client, type InsertClient, type User, type InsertUser, users, portfolioProjects, type PortfolioProject, type InsertPortfolioProject } from "@shared/schema";
 import { db } from "./db";
-import { eq, desc, gte, and } from "drizzle-orm";
+import { eq, desc, asc } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
@@ -18,6 +18,13 @@ export interface IStorage {
     inProgress: number;
     converted: number;
   }>;
+  
+  getPortfolioProjects(): Promise<PortfolioProject[]>;
+  getVisiblePortfolioProjects(): Promise<PortfolioProject[]>;
+  getPortfolioProject(id: string): Promise<PortfolioProject | undefined>;
+  createPortfolioProject(project: InsertPortfolioProject): Promise<PortfolioProject>;
+  updatePortfolioProject(id: string, updates: Partial<InsertPortfolioProject>): Promise<PortfolioProject | undefined>;
+  deletePortfolioProject(id: string): Promise<boolean>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -83,6 +90,38 @@ export class DatabaseStorage implements IStorage {
     const converted = allClients.filter((c) => c.status === "Converted").length;
 
     return { totalLeads, newThisWeek, inProgress, converted };
+  }
+
+  async getPortfolioProjects(): Promise<PortfolioProject[]> {
+    return await db.select().from(portfolioProjects).orderBy(asc(portfolioProjects.displayOrder), desc(portfolioProjects.createdAt));
+  }
+
+  async getVisiblePortfolioProjects(): Promise<PortfolioProject[]> {
+    return await db.select().from(portfolioProjects).where(eq(portfolioProjects.isVisible, true)).orderBy(asc(portfolioProjects.displayOrder), desc(portfolioProjects.createdAt));
+  }
+
+  async getPortfolioProject(id: string): Promise<PortfolioProject | undefined> {
+    const [project] = await db.select().from(portfolioProjects).where(eq(portfolioProjects.id, id));
+    return project || undefined;
+  }
+
+  async createPortfolioProject(project: InsertPortfolioProject): Promise<PortfolioProject> {
+    const [newProject] = await db.insert(portfolioProjects).values(project).returning();
+    return newProject;
+  }
+
+  async updatePortfolioProject(id: string, updates: Partial<InsertPortfolioProject>): Promise<PortfolioProject | undefined> {
+    const [updatedProject] = await db
+      .update(portfolioProjects)
+      .set(updates)
+      .where(eq(portfolioProjects.id, id))
+      .returning();
+    return updatedProject || undefined;
+  }
+
+  async deletePortfolioProject(id: string): Promise<boolean> {
+    const result = await db.delete(portfolioProjects).where(eq(portfolioProjects.id, id)).returning();
+    return result.length > 0;
   }
 }
 

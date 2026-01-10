@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { pgTable, text, varchar, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, text, varchar, timestamp, boolean, integer } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -99,3 +99,31 @@ export const insertClientSchema = createInsertSchema(clients).omit({
 
 export type InsertClient = z.infer<typeof insertClientSchema>;
 export type Client = typeof clients.$inferSelect;
+
+export const portfolioProjects = pgTable("portfolio_projects", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  title: text("title").notNull(),
+  description: text("description"),
+  imageUrl: text("image_url"),
+  projectUrl: text("project_url"),
+  category: text("category"),
+  isVisible: boolean("is_visible").notNull().default(true),
+  displayOrder: integer("display_order").notNull().default(0),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const insertPortfolioProjectSchema = createInsertSchema(portfolioProjects).omit({
+  id: true,
+  createdAt: true,
+}).extend({
+  title: z.string().min(2, "Title must be at least 2 characters"),
+  description: z.string().optional(),
+  imageUrl: z.string().optional(),
+  projectUrl: z.string().optional(),
+  category: z.string().optional(),
+  isVisible: z.boolean().optional(),
+  displayOrder: z.number().optional(),
+});
+
+export type InsertPortfolioProject = z.infer<typeof insertPortfolioProjectSchema>;
+export type PortfolioProject = typeof portfolioProjects.$inferSelect;
