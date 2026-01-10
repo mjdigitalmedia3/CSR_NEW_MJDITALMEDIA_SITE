@@ -10,6 +10,8 @@ import Submit from "@/pages/submit";
 import Dashboard from "@/pages/dashboard";
 import Clients from "@/pages/clients";
 import ClientDetail from "@/pages/client-detail";
+import Portfolio from "@/pages/portfolio";
+import PortfolioManager from "@/pages/portfolio-manager";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -20,6 +22,8 @@ function Router() {
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/clients" component={Clients} />
       <Route path="/clients/:id" component={ClientDetail} />
+      <Route path="/portfolio" component={Portfolio} />
+      <Route path="/portfolio-manager" component={PortfolioManager} />
       <Route component={NotFound} />
     </Switch>
   );
