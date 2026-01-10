@@ -181,7 +181,7 @@ export default function Home() {
       <footer className="py-8 px-4 sm:px-6 border-t">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <img src={logoImage} alt="MJ Digital Media" className="h-8 w-auto" />
+            <img src={logoImage} alt="MJ Digital Media" className="h-12 w-auto" />
           </div>
           <p className="text-sm text-muted-foreground">
             Client Lead Management System
