@@ -2,6 +2,7 @@ import { Link, useLocation } from "wouter";
 import { Users, LayoutDashboard, UserPlus, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./theme-toggle";
+import logoImage from "@assets/MJDM_copy_1768070340475.png";
 
 const navItems = [
   { href: "/", label: "Home", icon: FileText },
@@ -17,9 +18,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="max-w-7xl mx-auto flex h-16 items-center justify-between gap-4 px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2" data-testid="link-logo">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-            <Users className="h-5 w-5 text-primary-foreground" />
-          </div>
+          <img src={logoImage} alt="MJ Digital Media" className="h-9 w-auto" />
           <span className="text-lg font-semibold hidden sm:inline-block">MJ Digital Media</span>
         </Link>
 
