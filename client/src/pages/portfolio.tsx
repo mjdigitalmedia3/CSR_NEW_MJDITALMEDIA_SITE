@@ -1,9 +1,15 @@
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, X } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import type { PortfolioProject } from "@shared/schema";
 
 function ProjectSkeleton() {
@@ -23,6 +29,8 @@ export default function Portfolio() {
   const { data: projects, isLoading } = useQuery<PortfolioProject[]>({
     queryKey: ["/api/portfolio/public"],
   });
+
+  const [selectedMedia, setSelectedMedia] = useState<{ type: "image" | "video"; url: string; title: string } | null>(null);
 
   return (
     <div className="py-12 px-4 sm:px-6">
@@ -60,23 +68,40 @@ export default function Portfolio() {
                 data-testid={`card-portfolio-${project.id}`}
               >
                 {project.videoUrl ? (
-                  <div className="relative aspect-video overflow-hidden bg-muted">
+                  <div 
+                    className="relative aspect-video overflow-hidden bg-muted cursor-pointer"
+                    onClick={() => setSelectedMedia({ type: "video", url: project.videoUrl!, title: project.title })}
+                    data-testid={`media-portfolio-${project.id}`}
+                  >
                     <video
                       src={project.videoUrl}
                       className="w-full h-full object-contain"
-                      controls
                       muted
                       loop
                       playsInline
                     />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                      <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium">
+                        Click to enlarge
+                      </span>
+                    </div>
                   </div>
                 ) : project.imageUrl ? (
-                  <div className="relative aspect-video overflow-hidden bg-muted">
+                  <div 
+                    className="relative aspect-video overflow-hidden bg-muted cursor-pointer"
+                    onClick={() => setSelectedMedia({ type: "image", url: project.imageUrl!, title: project.title })}
+                    data-testid={`media-portfolio-${project.id}`}
+                  >
                     <img
                       src={project.imageUrl}
                       alt={project.title}
                       className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
                     />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                      <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium">
+                        Click to enlarge
+                      </span>
+                    </div>
                   </div>
                 ) : (
                   <div className="aspect-video bg-muted flex items-center justify-center">
@@ -120,6 +145,40 @@ export default function Portfolio() {
           </div>
         )}
       </div>
+
+      <Dialog open={!!selectedMedia} onOpenChange={() => setSelectedMedia(null)}>
+        <DialogContent className="max-w-4xl w-[95vw] p-0 bg-black/95 border-none">
+          <DialogTitle className="sr-only">{selectedMedia?.title || "Media preview"}</DialogTitle>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="absolute top-2 right-2 z-10 text-white hover:bg-white/20"
+            onClick={() => setSelectedMedia(null)}
+            data-testid="button-close-lightbox"
+          >
+            <X className="h-6 w-6" />
+          </Button>
+          <div className="flex items-center justify-center min-h-[50vh] max-h-[90vh] p-4">
+            {selectedMedia?.type === "video" ? (
+              <video
+                src={selectedMedia.url}
+                className="max-w-full max-h-[85vh] object-contain"
+                controls
+                autoPlay
+                loop
+                data-testid="video-lightbox"
+              />
+            ) : selectedMedia?.type === "image" ? (
+              <img
+                src={selectedMedia.url}
+                alt={selectedMedia.title}
+                className="max-w-full max-h-[85vh] object-contain"
+                data-testid="image-lightbox"
+              />
+            ) : null}
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
