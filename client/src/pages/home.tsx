@@ -75,7 +75,7 @@ export default function Home() {
             </div>
             
             <div className="flex justify-center lg:justify-end">
-              <Card className="overflow-hidden border-card-border shadow-lg w-full">
+              <Card className="overflow-hidden border-2 border-red-500 shadow-lg w-full">
                 <video 
                   src={heroVideo} 
                   autoPlay 
