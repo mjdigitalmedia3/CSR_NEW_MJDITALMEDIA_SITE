@@ -3,6 +3,7 @@ import { ArrowRight, Clock, FolderOpen, Shield, Sparkles, CheckCircle2, Users } 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import logoImage from "@assets/MJDM_copy_1768072123197.png";
+import heroVideo from "@assets/MJDM_1768072612194.mp4";
 
 const benefits = [
   {
@@ -36,38 +37,56 @@ export default function Home() {
     <div className="flex flex-col">
       <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-accent/20" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.15),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(74,144,226,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(200,50,50,0.15),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(100,100,100,0.1),transparent_50%)]" />
         
-        <div className="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 py-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary mb-8">
-            <Sparkles className="h-4 w-4" />
-            Client Lead Management Made Simple
-          </div>
-          
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6" data-testid="text-hero-title">
-            Streamline Your{" "}
-            <span className="text-primary">Client Intake</span>{" "}
-            Process
-          </h1>
-          
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
-            Capture potential client information and website requirements effortlessly. 
-            Never miss a lead or forget important project details again.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/submit">
-              <Button size="lg" className="gap-2 min-w-[200px]" data-testid="button-get-started">
-                Get Started
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            </Link>
-            <Link href="/dashboard">
-              <Button variant="outline" size="lg" className="gap-2 min-w-[200px]" data-testid="button-view-dashboard">
-                View Dashboard
-              </Button>
-            </Link>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-20">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary mb-8">
+                <Sparkles className="h-4 w-4" />
+                Client Lead Management Made Simple
+              </div>
+              
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6" data-testid="text-hero-title">
+                Streamline Your{" "}
+                <span className="text-primary">Client Intake</span>{" "}
+                Process
+              </h1>
+              
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mb-10">
+                Capture potential client information and website requirements effortlessly. 
+                Never miss a lead or forget important project details again.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4">
+                <Link href="/submit">
+                  <Button size="lg" className="gap-2 min-w-[200px]" data-testid="button-get-started">
+                    Get Started
+                    <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="/dashboard">
+                  <Button variant="outline" size="lg" className="gap-2 min-w-[200px]" data-testid="button-view-dashboard">
+                    View Dashboard
+                  </Button>
+                </Link>
+              </div>
+            </div>
+            
+            <div className="flex justify-center lg:justify-end">
+              <Card className="overflow-hidden border-card-border shadow-lg max-w-md w-full">
+                <video 
+                  src={heroVideo} 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                  className="w-full h-auto"
+                  data-testid="video-hero"
+                />
+              </Card>
+            </div>
           </div>
         </div>
       </section>
