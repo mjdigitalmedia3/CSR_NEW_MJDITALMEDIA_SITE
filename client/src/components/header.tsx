@@ -17,9 +17,13 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="max-w-7xl mx-auto flex h-16 items-center justify-between gap-4 px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2" data-testid="link-logo">
-          <img src={logoImage} alt="MJ Digital Media" className="h-9 w-auto" />
-          <span className="text-lg font-semibold hidden sm:inline-block">MJ Digital Media</span>
+        <Link href="/" className="flex items-center gap-3" data-testid="link-logo">
+          <img 
+            src={logoImage} 
+            alt="MJ Digital Media" 
+            className="h-12 w-auto animate-pulse hover:animate-none hover:scale-110 transition-transform duration-300" 
+          />
+          <span className="text-xl font-bold hidden sm:inline-block">MJ Digital Media</span>
         </Link>
 
         <nav className="flex items-center gap-1">

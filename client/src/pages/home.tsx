@@ -180,9 +180,13 @@ export default function Home() {
 
       <footer className="py-8 px-4 sm:px-6 border-t">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <img src={logoImage} alt="MJ Digital Media" className="h-8 w-auto" />
-            <span className="font-semibold">MJ Digital Media</span>
+          <div className="flex items-center gap-3">
+            <img 
+              src={logoImage} 
+              alt="MJ Digital Media" 
+              className="h-12 w-auto animate-pulse" 
+            />
+            <span className="text-lg font-bold">MJ Digital Media</span>
           </div>
           <p className="text-sm text-muted-foreground">
             Client Lead Management System
