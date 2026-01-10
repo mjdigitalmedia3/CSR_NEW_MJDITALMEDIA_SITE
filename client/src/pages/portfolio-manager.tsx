@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Plus, Edit2, Trash2, Eye, EyeOff, ExternalLink } from "lucide-react";
+import { Plus, Edit2, Trash2, Eye, EyeOff, ExternalLink, Upload, X } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -63,6 +63,39 @@ export default function PortfolioManager() {
   const { toast } = useToast();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingProject, setEditingProject] = useState<PortfolioProject | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      toast({ title: "Invalid file", description: "Please upload an image file.", variant: "destructive" });
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      toast({ title: "File too large", description: "Please upload an image under 5MB.", variant: "destructive" });
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const base64String = reader.result as string;
+      setImagePreview(base64String);
+      form.setValue("imageUrl", base64String);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const clearImage = () => {
+    setImagePreview(null);
+    form.setValue("imageUrl", "");
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
 
   const form = useForm<InsertPortfolioProject>({
     resolver: zodResolver(insertPortfolioProjectSchema),
@@ -141,6 +174,10 @@ export default function PortfolioManager() {
       isVisible: true,
       displayOrder: 0,
     });
+    setImagePreview(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
     setEditingProject(null);
     setIsDialogOpen(false);
   };
@@ -156,6 +193,7 @@ export default function PortfolioManager() {
       isVisible: project.isVisible,
       displayOrder: project.displayOrder,
     });
+    setImagePreview(project.imageUrl || null);
     setIsDialogOpen(true);
   };
 
@@ -239,16 +277,51 @@ export default function PortfolioManager() {
                     <FormField
                       control={form.control}
                       name="imageUrl"
-                      render={({ field }) => (
+                      render={() => (
                         <FormItem>
-                          <FormLabel>Image URL</FormLabel>
+                          <FormLabel>Project Image</FormLabel>
                           <FormControl>
-                            <Input 
-                              placeholder="https://example.com/image.jpg" 
-                              {...field} 
-                              value={field.value || ""}
-                              data-testid="input-project-image"
-                            />
+                            <div className="space-y-3">
+                              <input
+                                ref={fileInputRef}
+                                type="file"
+                                accept="image/*"
+                                onChange={handleImageUpload}
+                                className="hidden"
+                                data-testid="input-project-image-file"
+                              />
+                              {imagePreview ? (
+                                <div className="relative">
+                                  <img
+                                    src={imagePreview}
+                                    alt="Preview"
+                                    className="w-full h-32 object-cover rounded-lg border"
+                                  />
+                                  <Button
+                                    type="button"
+                                    variant="outline"
+                                    size="icon"
+                                    className="absolute top-2 right-2 h-7 w-7 bg-background"
+                                    onClick={clearImage}
+                                    data-testid="button-clear-image"
+                                  >
+                                    <X className="h-4 w-4" />
+                                  </Button>
+                                </div>
+                              ) : (
+                                <Button
+                                  type="button"
+                                  variant="outline"
+                                  className="w-full h-32 border-dashed flex flex-col gap-2"
+                                  onClick={() => fileInputRef.current?.click()}
+                                  data-testid="button-upload-image"
+                                >
+                                  <Upload className="h-6 w-6 text-muted-foreground" />
+                                  <span className="text-sm text-muted-foreground">Click to upload image</span>
+                                  <span className="text-xs text-muted-foreground">Max 5MB</span>
+                                </Button>
+                              )}
+                            </div>
                           </FormControl>
                           <FormMessage />
                         </FormItem>
