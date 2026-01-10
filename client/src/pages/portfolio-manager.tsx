@@ -405,13 +405,15 @@ export default function PortfolioManager() {
                 <CardContent className="p-6">
                   <div className="flex flex-col sm:flex-row sm:items-start gap-4">
                     {project.imageUrl ? (
-                      <img
-                        src={project.imageUrl}
-                        alt={project.title}
-                        className="w-full sm:w-24 h-32 sm:h-24 object-cover rounded-lg"
-                      />
+                      <div className="w-full sm:w-32 h-32 sm:h-24 bg-muted rounded-lg overflow-hidden flex items-center justify-center">
+                        <img
+                          src={project.imageUrl}
+                          alt={project.title}
+                          className="max-w-full max-h-full object-contain"
+                        />
+                      </div>
                     ) : (
-                      <div className="w-full sm:w-24 h-32 sm:h-24 bg-muted rounded-lg flex items-center justify-center">
+                      <div className="w-full sm:w-32 h-32 sm:h-24 bg-muted rounded-lg flex items-center justify-center">
                         <span className="text-muted-foreground text-xs">No image</span>
                       </div>
                     )}

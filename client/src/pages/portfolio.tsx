@@ -60,15 +60,15 @@ export default function Portfolio() {
                 data-testid={`card-portfolio-${project.id}`}
               >
                 {project.imageUrl ? (
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative aspect-video overflow-hidden bg-muted">
                     <img
                       src={project.imageUrl}
                       alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
                     />
                   </div>
                 ) : (
-                  <div className="h-48 bg-muted flex items-center justify-center">
+                  <div className="aspect-video bg-muted flex items-center justify-center">
                     <span className="text-muted-foreground">No image</span>
                   </div>
                 )}
