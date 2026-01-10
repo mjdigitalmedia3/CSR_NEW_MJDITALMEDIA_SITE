@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { ArrowRight, Code2, Palette, Globe, Smartphone, BarChart3, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoImage from "@assets/MJDM_copy_1768070340475.png";
+import logoVideo from "@assets/MJGLogo_1768071682999.mp4";
 
 const services = [
   {
@@ -81,10 +82,13 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-transparent rounded-full blur-3xl" />
               <div className="relative">
                 <div className="w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gradient-to-br from-zinc-800 to-zinc-900 border border-white/10 flex items-center justify-center overflow-hidden">
-                  <img 
-                    src={logoImage} 
-                    alt="MJ Digital Media" 
-                    className="w-48 sm:w-64 h-auto animate-pulse" 
+                  <video 
+                    src={logoVideo}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-56 sm:w-72 h-auto"
                   />
                 </div>
                 <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-primary/20 blur-2xl" />
