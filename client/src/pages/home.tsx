@@ -1,196 +1,230 @@
 import { Link } from "wouter";
-import { ArrowRight, Clock, FolderOpen, Shield, Sparkles, CheckCircle2, Users } from "lucide-react";
+import { ArrowRight, Code2, Palette, Globe, Smartphone, BarChart3, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import logoImage from "@assets/MJDM_copy_1768070340475.png";
 
-const benefits = [
+const services = [
   {
-    icon: Clock,
-    title: "Save Time",
-    description: "Streamline your client intake process with organized, easy-to-manage lead forms.",
+    icon: Globe,
+    title: "Website Design & Logo",
+    description: "Custom websites that capture your brand identity and convert visitors into customers.",
   },
   {
-    icon: FolderOpen,
-    title: "Organize Leads",
-    description: "Keep all your potential clients in one place with powerful filtering and search.",
+    icon: Palette,
+    title: "Business Branding",
+    description: "Complete brand identity design including logos, color schemes, and style guides.",
   },
   {
-    icon: Shield,
-    title: "Never Miss Details",
-    description: "Capture every requirement with comprehensive intake forms tailored for web projects.",
+    icon: Smartphone,
+    title: "Mobile Application Design",
+    description: "Intuitive mobile app interfaces designed for the best user experience.",
+  },
+  {
+    icon: Code2,
+    title: "UI/UX Mobile Design",
+    description: "User-centered design that makes your digital products easy and enjoyable to use.",
   },
 ];
 
-const features = [
-  "Customizable intake forms",
-  "Budget and timeline tracking",
-  "Project type categorization",
-  "Feature requirements capture",
-  "Status management",
-  "Contact information storage",
+const stats = [
+  { value: "150+", label: "Projects Completed" },
+  { value: "98%", label: "Client Satisfaction" },
+  { value: "5+", label: "Years Experience" },
+  { value: "24/7", label: "Support Available" },
 ];
 
 export default function Home() {
   return (
-    <div className="flex flex-col">
-      <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-accent/20" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.15),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(74,144,226,0.1),transparent_50%)]" />
+    <div className="flex flex-col bg-background">
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-background to-black" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(220,38,38,0.08),transparent_40%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(220,38,38,0.05),transparent_40%)]" />
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
         
-        <div className="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 py-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary mb-8">
-            <Sparkles className="h-4 w-4" />
-            Client Lead Management Made Simple
-          </div>
-          
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6" data-testid="text-hero-title">
-            Streamline Your{" "}
-            <span className="text-primary">Client Intake</span>{" "}
-            Process
-          </h1>
-          
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
-            Capture potential client information and website requirements effortlessly. 
-            Never miss a lead or forget important project details again.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/submit">
-              <Button size="lg" className="gap-2 min-w-[200px]" data-testid="button-get-started">
-                Get Started
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            </Link>
-            <Link href="/dashboard">
-              <Button variant="outline" size="lg" className="gap-2 min-w-[200px]" data-testid="button-view-dashboard">
-                View Dashboard
-              </Button>
-            </Link>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-20 w-full">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-sm font-medium text-primary">
+                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                Currently available for freelance worldwide
+              </div>
+              
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-tight" data-testid="text-hero-title">
+                <span className="text-white">Creative</span>{" "}
+                <span className="text-primary">Visual</span>
+                <br />
+                <span className="text-white">Designer</span>
+              </h1>
+              
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-lg">
+                We help businesses transform their digital presence with stunning designs 
+                and seamless user experiences that drive results.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row items-start gap-4">
+                <Link href="/submit">
+                  <Button size="lg" className="gap-2 min-w-[180px] text-base font-semibold" data-testid="button-get-started">
+                    Hire Us
+                    <ArrowRight className="h-5 w-5" />
+                  </Button>
+                </Link>
+                <Link href="/dashboard">
+                  <Button variant="outline" size="lg" className="gap-2 min-w-[180px] text-base font-semibold border-white/20 hover:bg-white/5" data-testid="button-view-dashboard">
+                    View Projects
+                  </Button>
+                </Link>
+              </div>
+            </div>
+            
+            <div className="relative flex items-center justify-center">
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-transparent rounded-full blur-3xl" />
+              <div className="relative">
+                <div className="w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gradient-to-br from-zinc-800 to-zinc-900 border border-white/10 flex items-center justify-center overflow-hidden">
+                  <img 
+                    src={logoImage} 
+                    alt="MJ Digital Media" 
+                    className="w-48 sm:w-64 h-auto animate-pulse" 
+                  />
+                </div>
+                <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-primary/20 blur-2xl" />
+                <div className="absolute -top-4 -left-4 w-32 h-32 rounded-full bg-primary/10 blur-3xl" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 px-4 sm:px-6 bg-card/50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Why Choose MJ Digital Media?</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Everything you need to manage potential clients and their website requirements in one place.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {benefits.map((benefit) => {
-              const Icon = benefit.icon;
+      <section className="py-16 px-4 sm:px-6 border-y border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {services.map((service) => {
+              const Icon = service.icon;
               return (
-                <Card key={benefit.title} className="hover-elevate border-card-border" data-testid={`card-benefit-${benefit.title.toLowerCase().replace(/\s+/g, "-")}`}>
-                  <CardContent className="pt-8 pb-8 px-6 text-center">
-                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 mb-6">
-                      <Icon className="h-7 w-7 text-primary" />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3">{benefit.title}</h3>
-                    <p className="text-muted-foreground">{benefit.description}</p>
-                  </CardContent>
-                </Card>
+                <div 
+                  key={service.title} 
+                  className="flex items-center gap-3 group cursor-pointer"
+                  data-testid={`service-${service.title.toLowerCase().replace(/\s+/g, "-")}`}
+                >
+                  <div className="p-3 rounded-lg bg-white/5 border border-white/10 group-hover:border-primary/50 group-hover:bg-primary/10 transition-all duration-300">
+                    <Icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <span className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">
+                    {service.title}
+                  </span>
+                </div>
               );
             })}
           </div>
         </div>
       </section>
 
-      <section className="py-20 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-                Everything You Need to Capture Client Requirements
-              </h2>
-              <p className="text-muted-foreground text-lg mb-8">
-                Our comprehensive intake form captures all the essential details you need to understand
-                your potential clients and their project requirements.
+      <section className="py-24 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <p className="text-primary font-semibold uppercase tracking-wider text-sm">About Us</p>
+                <h2 className="text-4xl sm:text-5xl font-black text-white">
+                  We Create Digital Experiences That Matter
+                </h2>
+              </div>
+              
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                At MJ Digital Media, we specialize in creating stunning digital experiences 
+                that help businesses grow. From brand identity to web development, we bring 
+                your vision to life with precision and creativity.
               </p>
               
-              <div className="grid sm:grid-cols-2 gap-4">
-                {features.map((feature) => (
-                  <div key={feature} className="flex items-center gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
-                    <span className="text-sm font-medium">{feature}</span>
+              <div className="grid grid-cols-2 gap-6">
+                {stats.map((stat) => (
+                  <div key={stat.label} className="space-y-2">
+                    <p className="text-3xl sm:text-4xl font-black text-primary">{stat.value}</p>
+                    <p className="text-sm text-muted-foreground">{stat.label}</p>
                   </div>
                 ))}
               </div>
             </div>
             
-            <Card className="p-8 border-card-border">
-              <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Users className="h-6 w-6 text-primary" />
+            <div className="grid grid-cols-2 gap-4">
+              {services.map((service) => {
+                const Icon = service.icon;
+                return (
+                  <div 
+                    key={service.title}
+                    className="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-primary/30 hover:bg-white/[0.04] transition-all duration-300 group"
+                  >
+                    <div className="p-3 rounded-xl bg-primary/10 w-fit mb-4 group-hover:bg-primary/20 transition-colors">
+                      <Icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="font-bold text-white mb-2">{service.title}</h3>
+                    <p className="text-sm text-muted-foreground">{service.description}</p>
                   </div>
-                  <div>
-                    <p className="font-semibold">Client Details</p>
-                    <p className="text-sm text-muted-foreground">Name, email, phone, company</p>
-                  </div>
-                </div>
-                
-                <div className="h-px bg-border" />
-                
-                <div className="flex items-center gap-4">
-                  <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <FolderOpen className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-semibold">Project Scope</p>
-                    <p className="text-sm text-muted-foreground">Type, budget, timeline</p>
-                  </div>
-                </div>
-                
-                <div className="h-px bg-border" />
-                
-                <div className="flex items-center gap-4">
-                  <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Sparkles className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-semibold">Feature Requirements</p>
-                    <p className="text-sm text-muted-foreground">E-commerce, CMS, SEO, and more</p>
-                  </div>
-                </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 px-4 sm:px-6 bg-gradient-to-b from-background via-primary/5 to-background">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
+          <div className="space-y-4">
+            <p className="text-primary font-semibold uppercase tracking-wider text-sm">Get Started</p>
+            <h2 className="text-4xl sm:text-5xl font-black text-white">
+              Ready to Transform Your Digital Presence?
+            </h2>
+          </div>
+          
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Let's discuss your project and see how we can help bring your vision to life. 
+            Fill out our intake form and we'll get back to you within 24 hours.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+            <Link href="/submit">
+              <Button size="lg" className="gap-2 min-w-[200px] text-base font-semibold" data-testid="button-start-now">
+                Start Your Project
+                <ArrowRight className="h-5 w-5" />
+              </Button>
+            </Link>
+            <Link href="/clients">
+              <Button variant="outline" size="lg" className="gap-2 min-w-[200px] text-base font-semibold border-white/20 hover:bg-white/5">
+                View All Leads
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <footer className="py-12 px-4 sm:px-6 border-t border-white/10">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="flex items-center gap-4">
+              <img 
+                src={logoImage} 
+                alt="MJ Digital Media" 
+                className="h-14 w-auto" 
+              />
+              <div>
+                <p className="text-xl font-black text-white">MJ Digital Media</p>
+                <p className="text-sm text-muted-foreground">Creative Digital Agency</p>
               </div>
-            </Card>
+            </div>
+            
+            <div className="flex items-center gap-8">
+              <Link href="/" className="text-sm text-muted-foreground hover:text-white transition-colors">Home</Link>
+              <Link href="/dashboard" className="text-sm text-muted-foreground hover:text-white transition-colors">Dashboard</Link>
+              <Link href="/clients" className="text-sm text-muted-foreground hover:text-white transition-colors">Clients</Link>
+              <Link href="/submit" className="text-sm text-muted-foreground hover:text-white transition-colors">Contact</Link>
+            </div>
           </div>
-        </div>
-      </section>
-
-      <section className="py-20 px-4 sm:px-6 bg-primary/5">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6">Ready to Get Started?</h2>
-          <p className="text-muted-foreground text-lg mb-8">
-            Start capturing and organizing your client leads today. It only takes a minute to submit your first lead.
-          </p>
-          <Link href="/submit">
-            <Button size="lg" className="gap-2" data-testid="button-start-now">
-              Start Capturing Leads
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-          </Link>
-        </div>
-      </section>
-
-      <footer className="py-8 px-4 sm:px-6 border-t">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <img 
-              src={logoImage} 
-              alt="MJ Digital Media" 
-              className="h-12 w-auto animate-pulse" 
-            />
-            <span className="text-lg font-bold">MJ Digital Media</span>
+          
+          <div className="mt-8 pt-8 border-t border-white/5 text-center">
+            <p className="text-sm text-muted-foreground">
+              &copy; {new Date().getFullYear()} MJ Digital Media. All rights reserved.
+            </p>
           </div>
-          <p className="text-sm text-muted-foreground">
-            Client Lead Management System
-          </p>
         </div>
       </footer>
     </div>

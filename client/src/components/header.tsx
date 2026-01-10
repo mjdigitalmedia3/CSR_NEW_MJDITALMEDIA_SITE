@@ -15,15 +15,15 @@ export function Header() {
   const [location] = useLocation();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-background/90 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto flex h-16 items-center justify-between gap-4 px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-3" data-testid="link-logo">
           <img 
             src={logoImage} 
             alt="MJ Digital Media" 
-            className="h-12 w-auto animate-pulse hover:animate-none hover:scale-110 transition-transform duration-300" 
+            className="h-10 w-auto hover:scale-105 transition-transform duration-300" 
           />
-          <span className="text-xl font-bold hidden sm:inline-block">MJ Digital Media</span>
+          <span className="text-lg font-black hidden sm:inline-block text-white">MJ Digital Media</span>
         </Link>
 
         <nav className="flex items-center gap-1">
