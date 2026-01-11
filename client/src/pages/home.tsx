@@ -104,7 +104,7 @@ export default function Home() {
             {benefits.map((benefit) => {
               const Icon = benefit.icon;
               return (
-                <Card key={benefit.title} className="hover-elevate border-card-border" data-testid={`card-benefit-${benefit.title.toLowerCase().replace(/\s+/g, "-")}`}>
+                <Card key={benefit.title} className="hover-elevate border border-red-500" data-testid={`card-benefit-${benefit.title.toLowerCase().replace(/\s+/g, "-")}`}>
                   <CardContent className="pt-8 pb-8 px-6 text-center">
                     <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 mb-6">
                       <Icon className="h-7 w-7 text-primary" />
