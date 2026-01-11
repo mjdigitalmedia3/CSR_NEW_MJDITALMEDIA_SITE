@@ -1,10 +1,10 @@
-# LeadFlow - Client Lead Management Application
+# MJ Digital Media - Professional Digital Agency Website
 
 ## Overview
 
-LeadFlow is a client lead management application designed for web development agencies and freelancers to streamline their client intake process. The application allows users to capture potential client information through intake forms, track lead status through a pipeline, and manage client relationships from initial contact to conversion.
+MJ Digital Media is a professional digital agency website serving as both a company showcase and client lead capture system. The site offers web design, website development, SEO, social media marketing, branding, and full digital marketing services for businesses.
 
-The system provides a dashboard with key metrics, a searchable/filterable client list, detailed client views with status management, and a comprehensive lead submission form capturing project requirements, budgets, timelines, and feature needs.
+The system provides a conversion-focused homepage with agency services, about section, testimonials, and strong CTAs. It includes a client dashboard with key metrics, a searchable/filterable lead list, detailed lead views with status management, a portfolio showcase, and a comprehensive project inquiry form capturing requirements, budgets, timelines, and feature needs.
 
 ## User Preferences
 
@@ -68,18 +68,22 @@ The application supports light and dark modes via CSS variables and a ThemeProvi
 
 ## Recent Changes (January 2026)
 
+- Complete homepage rewrite with conversion-focused agency content (Hero, About, Services, Why Choose Us, Process, Testimonials, CTA sections)
 - Added comprehensive data-testid attributes to all interactive elements and display content for automated testing
 - Enhanced PATCH /api/clients/:id endpoint with proper Zod schema validation using updateClientSchema
 - All API endpoints now validate request bodies with shared Zod schemas for type safety
+- Red/black color scheme with Material Design 3-inspired dark theme aesthetic
+- Portfolio with image/video upload, lightbox modal, and Framer Motion animations
 
 ## Key Features
 
-1. **Landing Page**: Professional hero section with benefits overview
+1. **Landing Page**: Conversion-focused homepage with Hero, About MJ Digital Media, Services (6 service offerings), Why Choose Us, How We Work process, Client Testimonials, and Final CTA sections
 2. **Lead Submission Form**: Captures contact info, project type, budget, timeline, features, and requirements
 3. **Dashboard**: Real-time statistics with charts showing lead distribution by status
 4. **Client List**: Searchable, filterable list with status badges
 5. **Client Detail**: Full client info with inline status management and delete functionality
-6. **Dark Mode**: Full theme support with toggle in header
+6. **Portfolio**: Showcase with image/video upload, visibility controls, and lightbox modal
+7. **Dark Mode**: Full theme support with toggle in header, dark theme by default
 
 ## API Endpoints
 
