@@ -141,7 +141,7 @@ export default function Home() {
               </div>
             </div>
             
-            <Card className="p-8 border-card-border">
+            <Card className="p-8 border border-red-500">
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
                   <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
