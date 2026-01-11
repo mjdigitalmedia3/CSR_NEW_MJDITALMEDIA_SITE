@@ -12,6 +12,10 @@ import Clients from "@/pages/clients";
 import ClientDetail from "@/pages/client-detail";
 import Portfolio from "@/pages/portfolio";
 import PortfolioManager from "@/pages/portfolio-manager";
+import Services from "@/pages/services";
+import StrategicWebDesign from "@/pages/services/strategic-web-design";
+import SEOServices from "@/pages/services/seo";
+import DigitalMarketing from "@/pages/services/digital-marketing";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -24,6 +28,10 @@ function Router() {
       <Route path="/clients/:id" component={ClientDetail} />
       <Route path="/portfolio" component={Portfolio} />
       <Route path="/portfolio-manager" component={PortfolioManager} />
+      <Route path="/services" component={Services} />
+      <Route path="/services/strategic-web-design" component={StrategicWebDesign} />
+      <Route path="/services/seo" component={SEOServices} />
+      <Route path="/services/digital-marketing" component={DigitalMarketing} />
       <Route component={NotFound} />
     </Switch>
   );

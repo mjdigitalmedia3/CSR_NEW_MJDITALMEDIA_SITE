@@ -411,6 +411,9 @@ export default function Home() {
             <div>
               <h4 className="font-semibold mb-4">Quick Links</h4>
               <div className="space-y-2">
+                <Link href="/services" className="block text-sm text-muted-foreground hover:text-primary" data-testid="link-footer-services">
+                  Our Services
+                </Link>
                 <Link href="/portfolio" className="block text-sm text-muted-foreground hover:text-primary" data-testid="link-footer-portfolio">
                   Our Portfolio
                 </Link>

@@ -1,0 +1,107 @@
+Services Page + Service Detail Pages Prompt
+
+Prompt:
+
+You are a senior web copywriter, UX strategist, and digital marketing expert.
+
+Create a Services page for MJ Digital Media, a digital agency that offers Strategic Web Design, SEO, and Digital Marketing services.
+
+The Services page must clearly summarize each service and link to its own dedicated service detail page. Then, create the full content for each service detail page.
+
+Brand & Business Context
+
+Company Name: MJ Digital Media
+Industry: Web Design & Digital Marketing
+Target Audience:
+
+Small to mid-sized businesses
+
+Startups and growing brands
+
+Business owners who want more leads, traffic, and revenue
+
+Tone & Style:
+
+Professional, modern, and confident
+
+Friendly and approachable
+
+Clear, benefit-driven, and conversion-focused
+
+Part 1: Services Page
+
+Create a main Services page that includes:
+
+A strong hero section (headline, subheadline, CTA)
+
+A short intro explaining how MJ Digital Media helps businesses grow online
+
+A services overview section featuring:
+
+Strategic Web Design
+
+SEO (Search Engine Optimization)
+
+Digital Marketing
+
+For each service on the Services page:
+
+Write a concise, benefits-focused summary
+
+Include a clear CTA link labeled “Learn More”
+
+Assign SEO-friendly URLs that link to each service detail page:
+
+/services/strategic-web-design
+
+/services/seo
+
+/services/digital-marketing
+
+Part 2: Service Detail Pages
+
+Create a full service detail page for each service listed above.
+
+Each service detail page must include:
+
+Hero section with a clear value-driven headline
+
+Overview of the service and who it’s for
+
+Problems this service solves
+
+How MJ Digital Media delivers this service (process or approach)
+
+Key features translated into business benefits
+
+Expected outcomes / results
+
+Why choose MJ Digital Media for this service
+
+Strong CTAs (e.g., “Schedule a Free Consultation”)
+
+SEO & Conversion Guidelines
+
+Use SEO-friendly headings (H1–H3 structure)
+
+Naturally incorporate relevant keywords (web design, SEO services, digital marketing agency, etc.)
+
+Focus on clarity, trust-building, and conversion
+
+Avoid fluff, clichés, and generic marketing language
+
+Output Format
+
+Clearly label each section:
+
+Services Page
+
+Strategic Web Design Page
+
+SEO Services Page
+
+Digital Marketing Services Page
+
+Provide clean, ready-to-publish website copy
+
+Include internal links exactly as specified above

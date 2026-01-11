@@ -1,11 +1,12 @@
 import { Link, useLocation } from "wouter";
-import { Users, LayoutDashboard, UserPlus, FileText, FolderOpen, Settings } from "lucide-react";
+import { Users, LayoutDashboard, UserPlus, FileText, FolderOpen, Settings, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./theme-toggle";
 import logoImage from "@assets/MJDM_copy_1768072123197.png";
 
 const navItems = [
   { href: "/", label: "Home", icon: FileText },
+  { href: "/services", label: "Services", icon: Briefcase },
   { href: "/portfolio", label: "Portfolio", icon: FolderOpen },
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/clients", label: "Clients", icon: Users },
