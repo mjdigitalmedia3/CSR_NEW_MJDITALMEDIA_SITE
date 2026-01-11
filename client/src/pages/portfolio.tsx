@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { ExternalLink, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -11,6 +12,37 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import type { PortfolioProject } from "@shared/schema";
+
+const randomAnimations = [
+  {
+    initial: { scale: 1, rotate: 0, x: 0, y: 0 },
+    animate: { scale: [1, 1.1, 0.9, 1.05, 1], rotate: [0, 5, -5, 3, 0], x: 0, y: 0 },
+  },
+  {
+    initial: { scale: 1, rotate: 0, x: 0, y: 0 },
+    animate: { scale: [1, 0.95, 1.15, 1], rotate: [0, -10, 10, 0], x: [0, -10, 10, 0], y: 0 },
+  },
+  {
+    initial: { scale: 1, rotate: 0, x: 0, y: 0 },
+    animate: { scale: [1, 1.2, 0.8, 1.1, 1], rotate: [0, 0, 0, 0, 0], x: 0, y: [0, -20, 10, -5, 0] },
+  },
+  {
+    initial: { scale: 1, rotate: 0, x: 0, y: 0 },
+    animate: { scale: [1, 1.05, 1.1, 1.15, 1], rotate: [0, 15, -15, 8, 0], x: 0, y: 0 },
+  },
+  {
+    initial: { scale: 1, rotate: 0, x: 0, y: 0 },
+    animate: { scale: [1, 0.9, 1.2, 1], rotate: [0, -5, 5, 0], x: [0, 15, -15, 0], y: [0, -10, 10, 0] },
+  },
+  {
+    initial: { scale: 1, rotate: 0, x: 0, y: 0 },
+    animate: { scale: [1, 1.3, 0.85, 1.1, 1], rotate: [0, 8, -8, 4, 0], x: 0, y: 0 },
+  },
+];
+
+function getRandomAnimation() {
+  return randomAnimations[Math.floor(Math.random() * randomAnimations.length)];
+}
 
 function ProjectSkeleton() {
   return (
@@ -31,6 +63,19 @@ export default function Portfolio() {
   });
 
   const [selectedMedia, setSelectedMedia] = useState<{ type: "image" | "video"; url: string; title: string } | null>(null);
+  const [animatingId, setAnimatingId] = useState<string | null>(null);
+  const [currentAnimation, setCurrentAnimation] = useState(randomAnimations[0]);
+
+  const handleMediaClick = (id: string, type: "image" | "video", url: string, title: string) => {
+    const animation = getRandomAnimation();
+    setCurrentAnimation(animation);
+    setAnimatingId(id);
+    
+    setTimeout(() => {
+      setAnimatingId(null);
+      setSelectedMedia({ type, url, title });
+    }, 500);
+  };
 
   return (
     <div className="py-12 px-4 sm:px-6">
@@ -64,14 +109,17 @@ export default function Portfolio() {
             {projects?.map((project) => (
               <Card 
                 key={project.id} 
-                className="overflow-hidden hover-elevate border-card-border group"
+                className="overflow-visible hover-elevate border-card-border group"
                 data-testid={`card-portfolio-${project.id}`}
               >
                 {project.videoUrl ? (
-                  <div 
-                    className="relative aspect-video overflow-hidden bg-muted cursor-pointer"
-                    onClick={() => setSelectedMedia({ type: "video", url: project.videoUrl!, title: project.title })}
+                  <motion.div 
+                    className="relative aspect-video overflow-hidden bg-muted cursor-pointer rounded-t-lg"
+                    onClick={() => handleMediaClick(project.id, "video", project.videoUrl!, project.title)}
                     data-testid={`media-portfolio-${project.id}`}
+                    initial={currentAnimation.initial}
+                    animate={animatingId === project.id ? currentAnimation.animate : currentAnimation.initial}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
                   >
                     <video
                       src={project.videoUrl}
@@ -85,12 +133,15 @@ export default function Portfolio() {
                         Click to enlarge
                       </span>
                     </div>
-                  </div>
+                  </motion.div>
                 ) : project.imageUrl ? (
-                  <div 
-                    className="relative aspect-video overflow-hidden bg-muted cursor-pointer"
-                    onClick={() => setSelectedMedia({ type: "image", url: project.imageUrl!, title: project.title })}
+                  <motion.div 
+                    className="relative aspect-video overflow-hidden bg-muted cursor-pointer rounded-t-lg"
+                    onClick={() => handleMediaClick(project.id, "image", project.imageUrl!, project.title)}
                     data-testid={`media-portfolio-${project.id}`}
+                    initial={currentAnimation.initial}
+                    animate={animatingId === project.id ? currentAnimation.animate : currentAnimation.initial}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
                   >
                     <img
                       src={project.imageUrl}
@@ -102,9 +153,9 @@ export default function Portfolio() {
                         Click to enlarge
                       </span>
                     </div>
-                  </div>
+                  </motion.div>
                 ) : (
-                  <div className="aspect-video bg-muted flex items-center justify-center">
+                  <div className="aspect-video bg-muted flex items-center justify-center rounded-t-lg">
                     <span className="text-muted-foreground">No media</span>
                   </div>
                 )}
@@ -158,25 +209,35 @@ export default function Portfolio() {
           >
             <X className="h-6 w-6" />
           </Button>
-          <div className="flex items-center justify-center min-h-[50vh] max-h-[90vh] p-4">
-            {selectedMedia?.type === "video" ? (
-              <video
-                src={selectedMedia.url}
-                className="max-w-full max-h-[85vh] object-contain"
-                controls
-                autoPlay
-                loop
-                data-testid="video-lightbox"
-              />
-            ) : selectedMedia?.type === "image" ? (
-              <img
-                src={selectedMedia.url}
-                alt={selectedMedia.title}
-                className="max-w-full max-h-[85vh] object-contain"
-                data-testid="image-lightbox"
-              />
-            ) : null}
-          </div>
+          <AnimatePresence>
+            {selectedMedia && (
+              <motion.div 
+                className="flex items-center justify-center min-h-[50vh] max-h-[90vh] p-4"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                {selectedMedia.type === "video" ? (
+                  <video
+                    src={selectedMedia.url}
+                    className="max-w-full max-h-[85vh] object-contain"
+                    controls
+                    autoPlay
+                    loop
+                    data-testid="video-lightbox"
+                  />
+                ) : (
+                  <img
+                    src={selectedMedia.url}
+                    alt={selectedMedia.title}
+                    className="max-w-full max-h-[85vh] object-contain"
+                    data-testid="image-lightbox"
+                  />
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </DialogContent>
       </Dialog>
     </div>
