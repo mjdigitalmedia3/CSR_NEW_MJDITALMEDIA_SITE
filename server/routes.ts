@@ -3,6 +3,8 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertClientSchema, statusOptions, insertPortfolioProjectSchema } from "@shared/schema";
 import { z } from "zod";
+import fs from "fs";
+import path from "path";
 
 const updateClientSchema = insertClientSchema.partial().extend({
   status: z.enum(statusOptions).optional(),
@@ -103,6 +105,52 @@ export async function registerRoutes(
     } catch (error) {
       console.error("Error fetching stats:", error);
       res.status(500).json({ message: "Failed to fetch stats" });
+    }
+  });
+
+  // YouTube videos JSON helpers
+  const YOUTUBE_JSON_PATH = path.resolve("data/youtube-videos.json");
+
+  function readYouTubeVideos() {
+    if (fs.existsSync(YOUTUBE_JSON_PATH)) {
+      return JSON.parse(fs.readFileSync(YOUTUBE_JSON_PATH, "utf-8"));
+    }
+    return [];
+  }
+
+  function writeYouTubeVideos(videos: any[]) {
+    fs.writeFileSync(YOUTUBE_JSON_PATH, JSON.stringify(videos, null, 2));
+  }
+
+  // Serve visible YouTube videos (public portfolio page)
+  app.get("/data/youtube-videos.json", (req, res) => {
+    const videos = readYouTubeVideos();
+    const visible = videos.filter((v: any) => v.isVisible !== false);
+    res.json(visible);
+  });
+
+  // Get all YouTube videos (admin - includes hidden)
+  app.get("/api/youtube-videos", (req, res) => {
+    res.json(readYouTubeVideos());
+  });
+
+  // Toggle visibility of a YouTube video
+  app.patch("/api/youtube-videos/:id", (req, res) => {
+    try {
+      const videos = readYouTubeVideos();
+      const index = videos.findIndex((v: any) => v.id === req.params.id);
+      if (index === -1) {
+        return res.status(404).json({ message: "Video not found" });
+      }
+      const { isVisible } = req.body;
+      if (typeof isVisible === "boolean") {
+        videos[index].isVisible = isVisible;
+      }
+      writeYouTubeVideos(videos);
+      res.json(videos[index]);
+    } catch (error) {
+      console.error("Error updating YouTube video:", error);
+      res.status(500).json({ message: "Failed to update video" });
     }
   });
 
