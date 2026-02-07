@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ExternalLink, X, Play } from "lucide-react";
+import allVideos from "../../../data/youtube-videos.json";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Skeleton } from "@/components/ui/skeleton";
 import {
   Dialog,
   DialogContent,
@@ -54,41 +54,14 @@ function getRandomAnimation() {
   return randomAnimations[Math.floor(Math.random() * randomAnimations.length)];
 }
 
-function VideoSkeleton() {
-  return (
-    <Card>
-      <Skeleton className="h-48 w-full rounded-t-lg" />
-      <CardContent className="p-4 space-y-2">
-        <Skeleton className="h-6 w-3/4" />
-        <Skeleton className="h-4 w-full" />
-        <Skeleton className="h-4 w-1/2" />
-      </CardContent>
-    </Card>
-  );
-}
+const videos: YouTubeVideo[] = (allVideos as YouTubeVideo[]).filter(
+  (v) => (v as any).isVisible !== false
+);
 
 export default function Portfolio() {
-  const [videos, setVideos] = useState<YouTubeVideo[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [selectedVideo, setSelectedVideo] = useState<YouTubeVideo | null>(null);
   const [animatingId, setAnimatingId] = useState<string | null>(null);
   const [currentAnimation, setCurrentAnimation] = useState(randomAnimations[0]);
-
-  useEffect(() => {
-    const fetchVideos = async () => {
-      try {
-        const response = await fetch('/api/youtube-videos/public');
-        const data = await response.json();
-        setVideos(data);
-      } catch (error) {
-        console.error('Error fetching videos:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchVideos();
-  }, []);
 
   const handleVideoClick = (video: YouTubeVideo) => {
     const animation = getRandomAnimation();
@@ -111,13 +84,7 @@ export default function Portfolio() {
           </p>
         </div>
 
-        {isLoading ? (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <VideoSkeleton />
-            <VideoSkeleton />
-            <VideoSkeleton />
-          </div>
-        ) : videos?.length === 0 ? (
+        {videos.length === 0 ? (
           <Card className="border-dashed">
             <CardContent className="py-16 text-center">
               <p className="text-muted-foreground text-lg">
