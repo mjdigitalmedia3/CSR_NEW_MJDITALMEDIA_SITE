@@ -77,7 +77,7 @@ export default function Portfolio() {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await fetch('/data/youtube-videos.json');
+        const response = await fetch('/api/youtube-videos/public');
         const data = await response.json();
         setVideos(data);
       } catch (error) {

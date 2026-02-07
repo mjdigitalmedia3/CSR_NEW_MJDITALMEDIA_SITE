@@ -123,7 +123,7 @@ export async function registerRoutes(
   }
 
   // Serve visible YouTube videos (public portfolio page)
-  app.get("/data/youtube-videos.json", (req, res) => {
+  app.get("/api/youtube-videos/public", (req, res) => {
     const videos = readYouTubeVideos();
     const visible = videos.filter((v: any) => v.isVisible !== false);
     res.json(visible);
