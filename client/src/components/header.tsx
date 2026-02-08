@@ -1,22 +1,31 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Users, LayoutDashboard, UserPlus, FileText, FolderOpen, Settings, Briefcase } from "lucide-react";
+import { useSession, signOut } from "next-auth/react";
+import { Users, LayoutDashboard, UserPlus, FileText, FolderOpen, Settings, Briefcase, LogIn, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./theme-toggle";
 
-const navItems = [
+const publicNavItems = [
   { href: "/", label: "Home", icon: FileText },
   { href: "/services", label: "Services", icon: Briefcase },
   { href: "/portfolio", label: "Portfolio", icon: FolderOpen },
+  { href: "/submit", label: "New Lead", icon: UserPlus },
+];
+
+const adminNavItems = [
+  { href: "/portfolio-manager", label: "Manage Portfolio", icon: Settings },
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/clients", label: "Clients", icon: Users },
-  { href: "/submit", label: "New Lead", icon: UserPlus },
-  { href: "/portfolio-manager", label: "Manage Portfolio", icon: Settings },
 ];
 
 export function Header() {
   const router = useRouter();
   const location = router.pathname;
+  const { data: session } = useSession();
+
+  const navItems = session
+    ? [...publicNavItems, ...adminNavItems]
+    : publicNavItems;
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -46,7 +55,33 @@ export function Header() {
           })}
         </nav>
 
-        <ThemeToggle />
+        <div className="flex items-center gap-2">
+          {session ? (
+            <Button
+              variant="ghost"
+              size="sm"
+              className="gap-2"
+              onClick={() => signOut({ callbackUrl: "/" })}
+              data-testid="nav-sign-out"
+            >
+              <LogOut className="h-4 w-4" />
+              <span className="hidden md:inline-block">Sign Out</span>
+            </Button>
+          ) : (
+            <Link href="/admin/login">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="gap-2"
+                data-testid="nav-admin-login"
+              >
+                <LogIn className="h-4 w-4" />
+                <span className="hidden md:inline-block">Admin</span>
+              </Button>
+            </Link>
+          )}
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

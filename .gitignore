@@ -3,3 +3,5 @@ dist
 .DS_Store
 .next
 *.tar.gz
+.env
+.env.local
