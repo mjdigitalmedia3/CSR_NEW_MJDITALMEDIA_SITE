@@ -36,7 +36,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         if (!deleted) {
           return res.status(404).json({ message: 'Client not found' });
         }
-        res.status(204).send();
+        res.status(204).end();
       } catch (error) {
         console.error('Error deleting client:', error);
         res.status(500).json({ message: 'Failed to delete client' });
