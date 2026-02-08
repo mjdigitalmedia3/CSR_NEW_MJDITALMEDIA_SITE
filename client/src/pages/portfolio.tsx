@@ -84,7 +84,21 @@ export default function Portfolio() {
           </p>
         </div>
 
-        {videos.length === 0 ? (
+        {isLoading ? (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[1, 2, 3].map((i) => (
+              <Card key={i}>
+                <CardContent className="p-0">
+                  <Skeleton className="w-full aspect-video rounded-t-lg" />
+                  <div className="p-4 space-y-2">
+                    <Skeleton className="h-5 w-3/4" />
+                    <Skeleton className="h-4 w-1/2" />
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        ) : !videos || videos.length === 0 ? (
           <Card className="border-dashed">
             <CardContent className="py-16 text-center">
               <p className="text-muted-foreground text-lg">
