@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { ExternalLink, X, Play } from "lucide-react";
-import allVideos from "../../../data/youtube-videos.json";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   Dialog,
   DialogContent,
@@ -54,11 +55,10 @@ function getRandomAnimation() {
   return randomAnimations[Math.floor(Math.random() * randomAnimations.length)];
 }
 
-const videos: YouTubeVideo[] = (allVideos as YouTubeVideo[]).filter(
-  (v) => (v as any).isVisible !== false
-);
-
 export default function Portfolio() {
+  const { data: videos, isLoading } = useQuery<YouTubeVideo[]>({
+    queryKey: ["/api/youtube-videos/public"],
+  });
   const [selectedVideo, setSelectedVideo] = useState<YouTubeVideo | null>(null);
   const [animatingId, setAnimatingId] = useState<string | null>(null);
   const [currentAnimation, setCurrentAnimation] = useState(randomAnimations[0]);

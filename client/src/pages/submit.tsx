@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
-import { useLocation } from "wouter";
+import { useRouter } from "next/router";
 import { Lock, Send, Building2, Mail, Phone, User, Calendar, DollarSign, Layers } from "lucide-react";
 import { insertClientSchema, projectTypes, budgetRanges, timelineOptions, featureOptions, type InsertClient } from "@shared/schema";
 import { apiRequest, queryClient } from "@/lib/queryClient";
@@ -29,7 +29,8 @@ import {
 } from "@/components/ui/select";
 
 export default function Submit() {
-  const [, navigate] = useLocation();
+  const router = useRouter();
+  const navigate = (path: string) => router.push(path);
   const { toast } = useToast();
 
   const form = useForm<InsertClient>({

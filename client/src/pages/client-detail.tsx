@@ -1,5 +1,6 @@
 import { useQuery, useMutation } from "@tanstack/react-query";
-import { useParams, Link, useLocation } from "wouter";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { 
   ArrowLeft, 
   Building2, 
@@ -108,8 +109,9 @@ function DetailSkeleton() {
 }
 
 export default function ClientDetail() {
-  const { id } = useParams<{ id: string }>();
-  const [, navigate] = useLocation();
+  const router = useRouter();
+  const id = router.query.id as string;
+  const navigate = (path: string) => router.push(path);
   const { toast } = useToast();
 
   const { data: client, isLoading, error } = useQuery<Client>({

@@ -1,8 +1,8 @@
-import { Link, useLocation } from "wouter";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { Users, LayoutDashboard, UserPlus, FileText, FolderOpen, Settings, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./theme-toggle";
-import logoImage from "@assets/MJDM_copy_1768072123197.png";
 
 const navItems = [
   { href: "/", label: "Home", icon: FileText },
@@ -15,13 +15,14 @@ const navItems = [
 ];
 
 export function Header() {
-  const [location] = useLocation();
+  const router = useRouter();
+  const location = router.pathname;
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="max-w-7xl mx-auto flex h-16 items-center justify-between gap-4 px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-1" data-testid="link-logo">
-          <img src={logoImage} alt="MJ Digital Media" className="h-14 w-auto rounded-md" />
+          <img src="/assets/MJDM_copy_1768072123197.png" alt="MJ Digital Media" className="h-14 w-auto rounded-md" />
           <span className="text-lg font-bold tracking-tight"><span className="text-foreground">DIGITAL</span><span className="text-red-500">MEDIA</span></span>
         </Link>
 
