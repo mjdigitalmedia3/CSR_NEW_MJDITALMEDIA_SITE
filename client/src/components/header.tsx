@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSession, signOut } from "next-auth/react";
-import { Users, LayoutDashboard, UserPlus, FileText, FolderOpen, Settings, Briefcase, LogIn, LogOut } from "lucide-react";
+import { Users, LayoutDashboard, UserPlus, FileText, FolderOpen, Settings, Briefcase, LogIn, LogOut, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./theme-toggle";
 
@@ -9,6 +9,7 @@ const publicNavItems = [
   { href: "/", label: "Home", icon: FileText },
   { href: "/services", label: "Services", icon: Briefcase },
   { href: "/portfolio", label: "Portfolio", icon: FolderOpen },
+  { href: "/contact", label: "Contact", icon: MessageCircle },
   { href: "/submit", label: "New Lead", icon: UserPlus },
 ];
 
@@ -61,7 +62,7 @@ export function Header() {
               variant="ghost"
               size="sm"
               className="gap-2"
-              onClick={() => signOut({ callbackUrl: "/" })}
+              onClick={() => signOut({ callbackUrl: "http://localhost:3001" })}
               data-testid="nav-sign-out"
             >
               <LogOut className="h-4 w-4" />

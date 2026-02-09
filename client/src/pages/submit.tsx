@@ -51,7 +51,16 @@ export default function Submit() {
   const mutation = useMutation({
     mutationFn: async (data: InsertClient) => {
       const response = await apiRequest("POST", "/api/clients", data);
-      return response.json();
+      const result = await response.json();
+
+      // Send lead notification email via Resend
+      await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      }).catch((err) => console.error("Lead email failed:", err));
+
+      return result;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/clients"] });
