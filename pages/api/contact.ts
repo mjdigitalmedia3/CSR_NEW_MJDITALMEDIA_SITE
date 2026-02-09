@@ -15,10 +15,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
+  const fromName = process.env.RESEND_FROM_NAME || 'MJ Digital Media';
 
   try {
     await resend.emails.send({
-      from: `MJ Digital Media <${fromEmail}>`,
+      from: `${fromName} <${fromEmail}>`,
       to: [process.env.ADMIN_EMAIL || 'admin@mjdigitalmedia.com'],
       replyTo: email,
       subject: `Contact Form: ${subject || 'New Message'}`,
