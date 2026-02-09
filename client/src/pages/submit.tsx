@@ -1,11 +1,8 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
-import { useRouter } from "next/router";
-import { Lock, Send, Building2, Mail, Phone, User, Calendar, DollarSign, Layers } from "lucide-react";
+import { Lock, Send, Building2, Mail, Phone, User, Calendar, DollarSign, Layers, CheckCircle2 } from "lucide-react";
 import { insertClientSchema, projectTypes, budgetRanges, timelineOptions, featureOptions, type InsertClient } from "@shared/schema";
-import { apiRequest, queryClient } from "@/lib/queryClient";
-import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -29,9 +26,8 @@ import {
 } from "@/components/ui/select";
 
 export default function Submit() {
-  const router = useRouter();
-  const navigate = (path: string) => router.push(path);
-  const { toast } = useToast();
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
   const form = useForm<InsertClient>({
     resolver: zodResolver(insertClientSchema),
@@ -48,41 +44,49 @@ export default function Submit() {
     },
   });
 
-  const mutation = useMutation({
-    mutationFn: async (data: InsertClient) => {
-      const response = await apiRequest("POST", "/api/clients", data);
-      const result = await response.json();
+  const isSubmitting = form.formState.isSubmitting;
 
-      // Send lead notification email via Resend
-      await fetch("/api/leads", {
+  const onSubmit = async (data: InsertClient) => {
+    setError("");
+    try {
+      const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
-      }).catch((err) => console.error("Lead email failed:", err));
-
-      return result;
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["/api/clients"] });
-      queryClient.invalidateQueries({ queryKey: ["/api/stats"] });
-      toast({
-        title: "Success!",
-        description: "Your information has been submitted successfully.",
       });
-      navigate("/dashboard");
-    },
-    onError: (error: Error) => {
-      toast({
-        title: "Error",
-        description: error.message || "Failed to submit. Please try again.",
-        variant: "destructive",
-      });
-    },
-  });
 
-  const onSubmit = (data: InsertClient) => {
-    mutation.mutate(data);
+      if (!res.ok) {
+        const body = await res.json();
+        throw new Error(body.message || "Failed to submit");
+      }
+
+      setSubmitted(true);
+      form.reset();
+    } catch (err: any) {
+      setError(err.message || "Something went wrong. Please try again.");
+    }
   };
+
+  if (submitted) {
+    return (
+      <div className="min-h-[80vh] flex items-center justify-center px-4">
+        <Card className="w-full max-w-md text-center">
+          <CardContent className="pt-10 pb-10 space-y-4">
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30">
+              <CheckCircle2 className="h-8 w-8 text-green-600 dark:text-green-400" />
+            </div>
+            <h2 className="text-2xl font-bold">Project Submitted!</h2>
+            <p className="text-muted-foreground">
+              Thank you for sharing your project details. We'll review your requirements and get back to you shortly.
+            </p>
+            <Button onClick={() => setSubmitted(false)} variant="outline" className="mt-4">
+              Submit Another Project
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-[calc(100vh-4rem)] py-12 px-4 sm:px-6">
@@ -359,14 +363,20 @@ export default function Submit() {
                   )}
                 />
 
+                {error && (
+                  <div className="flex items-center gap-2 rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+                    {error}
+                  </div>
+                )}
+
                 <Button 
                   type="submit" 
                   size="lg" 
                   className="w-full gap-2"
-                  disabled={mutation.isPending}
+                  disabled={isSubmitting}
                   data-testid="button-submit"
                 >
-                  {mutation.isPending ? (
+                  {isSubmitting ? (
                     <>
                       <div className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
                       Submitting...

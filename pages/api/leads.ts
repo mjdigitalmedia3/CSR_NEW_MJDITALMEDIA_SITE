@@ -18,7 +18,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const fromName = process.env.RESEND_FROM_NAME || 'MJ Digital Media';
 
   try {
-    await resend.emails.send({
+    const { data, error: sendError } = await resend.emails.send({
       from: `${fromName} <${fromEmail}>`,
       to: [process.env.ADMIN_EMAIL || 'admin@mjdigitalmedia.com'],
       replyTo: email,
@@ -68,7 +68,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       `,
     });
 
-    res.status(200).json({ message: 'Lead notification sent successfully' });
+    if (sendError) {
+      console.error('Resend error:', sendError);
+      return res.status(400).json({ message: sendError.message || 'Failed to send email.' });
+    }
+
+    console.log('Lead email sent successfully:', data);
+    res.status(200).json({ message: 'Lead notification sent successfully', id: data?.id });
   } catch (error) {
     console.error('Error sending lead email:', error);
     res.status(500).json({ message: 'Failed to send notification email.' });

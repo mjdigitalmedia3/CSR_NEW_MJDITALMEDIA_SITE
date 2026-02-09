@@ -1,21 +1,4 @@
-import { sql } from "drizzle-orm";
-import { pgTable, text, varchar, timestamp, boolean, integer } from "drizzle-orm/pg-core";
-import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
-
-export const users = pgTable("users", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  username: text("username").notNull().unique(),
-  password: text("password").notNull(),
-});
-
-export const insertUserSchema = createInsertSchema(users).pick({
-  username: true,
-  password: true,
-});
-
-export type InsertUser = z.infer<typeof insertUserSchema>;
-export type User = typeof users.$inferSelect;
 
 export const projectTypes = [
   "E-commerce",
@@ -66,25 +49,7 @@ export const statusOptions = [
   "Archived"
 ] as const;
 
-export const clients = pgTable("clients", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  name: text("name").notNull(),
-  email: text("email").notNull(),
-  phone: text("phone"),
-  company: text("company"),
-  projectType: text("project_type").notNull(),
-  budgetRange: text("budget_range").notNull(),
-  timeline: text("timeline").notNull(),
-  features: text("features").array().notNull(),
-  requirements: text("requirements"),
-  status: text("status").notNull().default("New"),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-});
-
-export const insertClientSchema = createInsertSchema(clients).omit({
-  id: true,
-  createdAt: true,
-}).extend({
+export const insertClientSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email"),
   phone: z.string().optional(),
@@ -98,34 +63,3 @@ export const insertClientSchema = createInsertSchema(clients).omit({
 });
 
 export type InsertClient = z.infer<typeof insertClientSchema>;
-export type Client = typeof clients.$inferSelect;
-
-export const portfolioProjects = pgTable("portfolio_projects", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  title: text("title").notNull(),
-  description: text("description"),
-  imageUrl: text("image_url"),
-  videoUrl: text("video_url"),
-  projectUrl: text("project_url"),
-  category: text("category"),
-  isVisible: boolean("is_visible").notNull().default(true),
-  displayOrder: integer("display_order").notNull().default(0),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-});
-
-export const insertPortfolioProjectSchema = createInsertSchema(portfolioProjects).omit({
-  id: true,
-  createdAt: true,
-}).extend({
-  title: z.string().min(2, "Title must be at least 2 characters"),
-  description: z.string().optional(),
-  imageUrl: z.string().optional(),
-  videoUrl: z.string().optional(),
-  projectUrl: z.string().optional(),
-  category: z.string().optional(),
-  isVisible: z.boolean().optional(),
-  displayOrder: z.number().optional(),
-});
-
-export type InsertPortfolioProject = z.infer<typeof insertPortfolioProjectSchema>;
-export type PortfolioProject = typeof portfolioProjects.$inferSelect;

@@ -17,10 +17,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
   const fromName = process.env.RESEND_FROM_NAME || 'MJ Digital Media';
 
+  const toEmail = process.env.ADMIN_EMAIL || 'admin@mjdigitalmedia.com';
+
   try {
-    await resend.emails.send({
+    const { data, error: sendError } = await resend.emails.send({
       from: `${fromName} <${fromEmail}>`,
-      to: [process.env.ADMIN_EMAIL || 'admin@mjdigitalmedia.com'],
+      to: [toEmail],
       replyTo: email,
       subject: `Contact Form: ${subject || 'New Message'}`,
       html: `
@@ -48,7 +50,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       `,
     });
 
-    res.status(200).json({ message: 'Email sent successfully' });
+    if (sendError) {
+      console.error('Resend error:', sendError);
+      return res.status(400).json({ message: sendError.message || 'Failed to send email.' });
+    }
+
+    console.log('Email sent successfully:', data);
+    res.status(200).json({ message: 'Email sent successfully', id: data?.id });
   } catch (error) {
     console.error('Error sending contact email:', error);
     res.status(500).json({ message: 'Failed to send email. Please try again later.' });

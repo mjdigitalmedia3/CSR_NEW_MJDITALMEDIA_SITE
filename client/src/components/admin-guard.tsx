@@ -1,7 +1,6 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { Skeleton } from "@/components/ui/skeleton";
 
 export function AdminGuard({ children }: { children: React.ReactNode }) {
   const { data: session, status } = useSession();
@@ -15,14 +14,8 @@ export function AdminGuard({ children }: { children: React.ReactNode }) {
 
   if (status === "loading") {
     return (
-      <div className="py-12 px-4 sm:px-6 max-w-6xl mx-auto space-y-4">
-        <Skeleton className="h-8 w-64" />
-        <Skeleton className="h-4 w-96" />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-          <Skeleton className="h-48" />
-          <Skeleton className="h-48" />
-          <Skeleton className="h-48" />
-        </div>
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
       </div>
     );
   }
