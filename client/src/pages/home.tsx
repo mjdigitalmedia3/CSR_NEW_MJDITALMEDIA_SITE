@@ -434,7 +434,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Phone className="h-4 w-4 text-primary" />
-                  <span>(555) 123-4567</span>
+                  <span>(440) 836-2494</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Clock className="h-4 w-4 text-primary" />

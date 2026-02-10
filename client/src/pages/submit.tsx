@@ -188,7 +188,7 @@ export default function Submit() {
                               <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                               <Input 
                                 type="tel"
-                                placeholder="+1 (555) 000-0000" 
+                                placeholder="+1 (440) 836-2494" 
                                 className="pl-10"
                                 {...field} 
                                 value={field.value || ""}
