@@ -296,7 +296,7 @@ export default function Home() {
               <Card key={project.title} className="overflow-hidden hover-elevate border border-red-500" data-testid="card-featured-project">
                 <div className="relative aspect-video bg-gradient-to-br from-primary/10 to-accent/10 overflow-hidden flex items-center justify-center p-8">
                   <img 
-                    src="/assets/raccoon-muncher-logo.png" 
+                    src="/assets/RaccoonMuncher2.png" 
                     alt="Urban Raccoon Habitat Game"
                     className="w-full h-full object-contain"
                   />
