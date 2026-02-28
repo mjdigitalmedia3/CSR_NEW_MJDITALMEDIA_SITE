@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Globe, Search, Share2, Palette, TrendingUp, Zap, Target, Users, Award, MessageSquare, Rocket, CheckCircle2, Phone, Mail, Clock, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 const logoImage = "/assets/MJDM_copy_1768072123197.png";
 const heroVideo = "/assets/MJDM_1768072612194.mp4";
