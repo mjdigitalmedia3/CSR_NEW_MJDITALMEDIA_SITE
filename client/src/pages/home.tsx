@@ -100,10 +100,10 @@ const testimonials = [
 
 const featuredProjects = [
   {
-    title: "Raccoon Muncher",
+    title: "Urban Raccoon Habitat Game",
     description: "An interactive web game featuring dynamic gameplay and engaging user experience. Built with modern web technologies for seamless performance across all devices.",
     url: "https://raccoon-muncher.vercel.app/",
-    image: "https://raccoon-muncher.vercel.app/screenshot.png",
+    image: "/assets/raccoon-muncher-logo.png",
     tags: ["Web Game", "Interactive", "React"],
   },
 ];
@@ -296,8 +296,8 @@ export default function Home() {
               <Card key={project.title} className="overflow-hidden hover-elevate border border-red-500" data-testid="card-featured-project">
                 <div className="relative aspect-video bg-gradient-to-br from-primary/10 to-accent/10 overflow-hidden flex items-center justify-center p-8">
                   <img 
-                    src="/assets/raccoon-muncher-logo.svg" 
-                    alt="Raccoon Muncher Logo"
+                    src="/assets/raccoon-muncher-logo.png" 
+                    alt="Urban Raccoon Habitat Game"
                     className="w-full h-full object-contain"
                   />
                 </div>
