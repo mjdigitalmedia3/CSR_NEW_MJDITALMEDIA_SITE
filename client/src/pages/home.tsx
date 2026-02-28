@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Globe, Search, Share2, Palette, TrendingUp, Zap, Target, Users, Award, MessageSquare, Rocket, CheckCircle2, Phone, Mail, Clock } from "lucide-react";
+import { ArrowRight, Globe, Search, Share2, Palette, TrendingUp, Zap, Target, Users, Award, MessageSquare, Rocket, CheckCircle2, Phone, Mail, Clock, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 const logoImage = "/assets/MJDM_copy_1768072123197.png";
@@ -94,6 +94,16 @@ const testimonials = [
     quote: "Finally, a digital agency that understands small business needs. Best investment we've made this year.",
     author: "Amanda Rodriguez",
     company: "Bloom Boutique",
+  },
+];
+
+const featuredProjects = [
+  {
+    title: "Raccoon Muncher",
+    description: "An interactive web game featuring dynamic gameplay and engaging user experience. Built with modern web technologies for seamless performance across all devices.",
+    url: "https://raccoon-muncher.vercel.app/",
+    image: "https://raccoon-muncher.vercel.app/screenshot.png",
+    tags: ["Web Game", "Interactive", "React"],
   },
 ];
 
@@ -265,6 +275,48 @@ export default function Home() {
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4 sm:px-6 bg-card/30" id="featured-projects">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4" data-testid="text-featured-title">
+              Featured Project
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Check out our latest work and see what we can create for you.
+            </p>
+          </div>
+
+          <div className="max-w-3xl mx-auto">
+            {featuredProjects.map((project) => (
+              <Card key={project.title} className="overflow-hidden hover-elevate border border-red-500" data-testid="card-featured-project">
+                <div className="relative aspect-video bg-muted overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+                    <Globe className="h-16 w-16 text-primary/40" />
+                  </div>
+                </div>
+                <CardContent className="p-6">
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {project.tags.map((tag) => (
+                      <Badge key={tag} variant="secondary" className="text-xs">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                  <h3 className="text-2xl font-semibold mb-3">{project.title}</h3>
+                  <p className="text-muted-foreground mb-6">{project.description}</p>
+                  <Button asChild className="w-full gap-2">
+                    <a href={project.url} target="_blank" rel="noopener noreferrer" data-testid="link-featured-project">
+                      <ExternalLink className="h-4 w-4" />
+                      Visit Project
+                    </a>
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
