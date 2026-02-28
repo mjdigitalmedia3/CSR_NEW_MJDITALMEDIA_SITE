@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <!-- Trash Can -->
+  <path d="M120 180 L110 260 L290 260 L280 180 Z" fill="#4A5568" stroke="#2D3748" stroke-width="3"/>
+  <path d="M110 260 L105 280 L295 280 L290 260 Z" fill="#2D3748"/>
+  <ellipse cx="200" cy="180" rx="80" ry="15" fill="#718096" stroke="#2D3748" stroke-width="3"/>
+  <path d="M140 180 L145 140 L255 140 L260 180" fill="#4A5568" stroke="#2D3748" stroke-width="3"/>
+  
+  <!-- Trash Lid (tipped back) -->
+  <path d="M140 140 L130 100 L270 100 L260 140 Z" fill="#718096" stroke="#2D3748" stroke-width="3"/>
+  <path d="M125 100 L120 85 L280 85 L275 100 Z" fill="#4A5568" stroke="#2D3748" stroke-width="3"/>
+  
+  <!-- Trash items peeking out -->
+  <path d="M160 160 L170 130 L190 135 L180 165 Z" fill="#F56565" opacity="0.8"/>
+  <circle cx="220" cy="150" r="12" fill="#48BB78" opacity="0.8"/>
+  <path d="M240 155 L250 125 L270 130 L260 160 Z" fill="#ED8936" opacity="0.8"/>
+  
+  <!-- Raccoon Body -->
+  <ellipse cx="200" cy="200" rx="55" ry="45" fill="#4A5568"/>
+  <ellipse cx="200" cy="200" rx="35" ry="30" fill="#718096"/>
+  
+  <!-- Raccoon Head -->
+  <circle cx="200" cy="155" r="40" fill="#4A5568"/>
+  <ellipse cx="200" cy="160" rx="25" ry="22" fill="#718096"/>
+  
+  <!-- Raccoon Mask (the dark patches around eyes) -->
+  <ellipse cx="185" cy="150" rx="12" ry="10" fill="#2D3748"/>
+  <ellipse cx="215" cy="150" rx="12" ry="10" fill="#2D3748"/>
+  
+  <!-- Raccoon Eyes -->
+  <circle cx="182" cy="150" r="4" fill="#FFF"/>
+  <circle cx="182" cy="150" r="2" fill="#000"/>
+  <circle cx="218" cy="150" r="4" fill="#FFF"/>
+  <circle cx="218" cy="150" r="2" fill="#000"/>
+  
+  <!-- Raccoon Snout -->
+  <ellipse cx="200" cy="170" rx="14" ry="10" fill="#A0AEC0"/>
+  <ellipse cx="200" cy="168" rx="8" ry="5" fill="#2D3748"/>
+  
+  <!-- Raccoon Ears -->
+  <path d="M165 130 L155 105 L180 120 Z" fill="#4A5568" stroke="#2D3748" stroke-width="2"/>
+  <path d="M168 125 L162 110 L175 120 Z" fill="#718096"/>
+  <path d="M235 130 L245 105 L220 120 Z" fill="#4A5568" stroke="#2D3748" stroke-width="2"/>
+  <path d="M232 125 L238 110 L225 120 Z" fill="#718096"/>
+  
+  <!-- Raccoon Tail (striped, poking up) -->
+  <path d="M245 190 Q280 170 285 140 Q290 110 270 100" stroke="#4A5568" stroke-width="18" fill="none" stroke-linecap="round"/>
+  <path d="M250 185 Q275 165 280 140 Q285 115 270 105" stroke="#2D3748" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M258 178 Q275 162 278 142" stroke="#2D3748" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M265 165 Q275 150 275 135" stroke="#2D3748" stroke-width="4" fill="none" stroke-linecap="round"/>
+  
+  <!-- Paws holding food -->
+  <ellipse cx="175" cy="195" rx="10" ry="8" fill="#4A5568"/>
+  <ellipse cx="225" cy="195" rx="10" ry="8" fill="#4A5568"/>
+  
+  <!-- Pizza slice being munched -->
+  <path d="M190 185 L210 180 L200 200 Z" fill="#F6AD55" stroke="#C05621" stroke-width="1"/>
+  <circle cx="195" cy="188" r="2" fill="#C05621"/>
+  <circle cx="202" cy="186" r="2" fill="#C05621"/>
+  <circle cx="198" cy="192" r="2" fill="#C05621"/>
+  
+  <!-- Bite mark -->
+  <path d="M195 182 Q198 178 201 182 Q204 178 207 182" fill="#4A5568"/>
+  
+  <!-- Raccoon Paws -->
+  <ellipse cx="185" cy="225" rx="12" ry="8" fill="#4A5568"/>
+  <ellipse cx="215" cy="225" rx="12" ry="8" fill="#4A5568"/>
+  
+  <!-- Crumbs falling -->
+  <circle cx="180" cy="210" r="2" fill="#F6AD55"/>
+  <circle cx="220" cy="215" r="1.5" fill="#F6AD55"/>
+  <circle cx="205" cy="220" r="1" fill="#F6AD55"/>
+</svg>

@@ -294,10 +294,12 @@ export default function Home() {
           <div className="max-w-3xl mx-auto">
             {featuredProjects.map((project) => (
               <Card key={project.title} className="overflow-hidden hover-elevate border border-red-500" data-testid="card-featured-project">
-                <div className="relative aspect-video bg-muted overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                    <Globe className="h-16 w-16 text-primary/40" />
-                  </div>
+                <div className="relative aspect-video bg-gradient-to-br from-primary/10 to-accent/10 overflow-hidden flex items-center justify-center p-8">
+                  <img 
+                    src="/assets/raccoon-muncher-logo.svg" 
+                    alt="Raccoon Muncher Logo"
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 <CardContent className="p-6">
                   <div className="flex flex-wrap gap-2 mb-3">
