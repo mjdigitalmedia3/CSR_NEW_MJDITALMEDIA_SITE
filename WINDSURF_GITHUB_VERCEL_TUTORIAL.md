@@ -12,6 +12,7 @@
 9. [From Prompt to Production](#from-prompt-to-production)
 10. [Best Practices for AI Collaboration](#best-practices-for-ai-collaboration)
 11. [Troubleshooting with AI](#troubleshooting-with-ai)
+12. [Hands-On Exercises: Mastering the Windsurf Workflow](#hands-on-exercises-mastering-the-windsurf-workflow)
 
 ---
 
@@ -1307,6 +1308,504 @@ vercel
 
 ---
 
+## Hands-On Exercises: Mastering the Windsurf Workflow
+
+Complete these exercises to build muscle memory for common tasks. Each exercise includes step-by-step instructions and explains why the skill matters.
+
+---
+
+### Exercise 1: Creating a Workspace for a New Project
+
+**Objective**: Set up a proper workspace structure for a portfolio website project.
+
+**Steps**:
+1. Open Windsurf
+2. Click `File` → `Open Folder`
+3. Navigate to `Documents` and create a new folder named `portfolio-exercise`
+4. Select the folder and click `Open`
+5. Once loaded, click `File` → `Save Workspace As...`
+6. Save as `portfolio-exercise.code-workspace` in `Documents/Workspaces/`
+7. Verify the workspace opens correctly by closing and reopening Windsurf
+
+**Check Your Understanding**:
+- Where is the `.code-workspace` file stored?
+- What happens when you double-click a workspace file?
+
+**Why This Matters**:
+Workspaces preserve your entire development environment—open files, terminal history, and settings. Without workspaces, you'd spend 5-10 minutes recreating your setup every time you switch projects. With workspaces, you jump straight into coding.
+
+---
+
+### Exercise 2: Accessing Previous Projects
+
+**Objective**: Practice switching between multiple projects using workspace files.
+
+**Steps**:
+1. Create a second project folder: `Documents/blog-exercise`
+2. Open it in Windsurf and save as `blog-exercise.code-workspace`
+3. Close Windsurf completely
+4. Navigate to `Documents/Workspaces/` in your file explorer
+5. Double-click `portfolio-exercise.code-workspace`
+6. Note: Portfolio project loads with all previous state
+7. Switch projects: `File` → `Open Workspace from File...` → Select `blog-exercise.code-workspace`
+8. Try the Recent menu: `File` → `Open Recent` → Switch back to portfolio
+
+**Check Your Understanding**:
+- How many recent workspaces does Windsurf remember?
+- What's the fastest way to switch between two active projects?
+
+**Why This Matters**:
+Developers often work on 3-5 projects simultaneously. Fast project switching means you can respond to client feedback on Project A, fix a bug on Project B, and resume feature work on Project C without losing context.
+
+---
+
+### Exercise 3: Using the Terminal to Run Next.js Locally
+
+**Objective**: Start a Next.js development server and view your site locally.
+
+**Prerequisites**: Node.js installed (v18+)
+
+**Steps**:
+1. Open your `portfolio-exercise` workspace
+2. Open Terminal: Press `` Ctrl+` `` or `Terminal` → `New Terminal`
+3. Verify Node.js: Type `node --version` and press Enter
+4. Create Next.js project: `npx create-next-app@latest .`
+5. Answer prompts:
+   - TypeScript: Yes
+   - ESLint: Yes
+   - Tailwind CSS: Yes
+   - `src` directory: Yes
+   - App Router: Yes
+   - Import alias: No
+6. Wait for installation (2-5 minutes)
+7. Start dev server: `npm run dev`
+8. Open browser to `http://localhost:3000`
+9. Make a small edit to `src/app/page.tsx`
+10. Watch the browser auto-refresh
+11. Stop server: Press `Ctrl+C` in terminal
+
+**Check Your Understanding**:
+- What URL do you use to view your local site?
+- What command stops the server?
+- What happens when you save a file?
+
+**Common Terminal Commands**:
+```bash
+npm run dev      # Start development server
+npm run build    # Build for production
+npm start        # Start production server
+Ctrl+C           # Stop running server
+```
+
+**Why This Matters**:
+Local development lets you test changes instantly before showing anyone. The dev server provides hot reloading (instant updates), error overlays, and source maps for debugging. This is your safe sandbox—break things here, not on the live site.
+
+---
+
+### Exercise 4: Understanding the Next.js Project Structure
+
+**Objective**: Explore and understand the key files and folders in a Next.js project.
+
+**Steps**:
+1. With your portfolio project open, examine the Explorer panel
+2. Open each folder and read the files:
+
+**Explore These Files**:
+
+| Path | Purpose |
+|------|---------|
+| `src/app/page.tsx` | Home page component |
+| `src/app/layout.tsx` | Root layout (wraps all pages) |
+| `src/app/globals.css` | Global CSS styles |
+| `public/` | Static assets (images, fonts) |
+| `components/` | Reusable React components |
+| `next.config.js` | Next.js configuration |
+| `package.json` | Dependencies and scripts |
+| `tsconfig.json` | TypeScript settings |
+
+**Hands-On Exploration**:
+1. Open `src/app/page.tsx` - this renders at `/`
+2. Open `src/app/layout.tsx` - notice the `<html>` and `<body>` tags
+3. Create a new folder: `src/app/about`
+4. Create a file: `src/app/about/page.tsx`
+5. Add this code:
+   ```tsx
+   export default function AboutPage() {
+     return <h1>About Me</h1>
+   }
+   ```
+6. Visit `http://localhost:3000/about`
+
+**Check Your Understanding**:
+- Where do you put images you want to use?
+- What file creates the `/about` route?
+- What's the difference between `page.tsx` and `layout.tsx`?
+
+**Why This Matters**:
+Understanding the project structure lets you navigate confidently. You'll know where to add pages, where to put components, and which files control behavior. This mental model is essential for effective AI prompting—you need to reference the right files.
+
+---
+
+### Exercise 5: Setting Up .env.local and Understanding Environment Variables
+
+**Objective**: Create and use environment variables for sensitive configuration.
+
+**Steps**:
+1. In your project root, create a file named `.env.local`
+2. Add these variables:
+   ```
+   # Public variables (visible in browser)
+   NEXT_PUBLIC_SITE_URL=http://localhost:3000
+   NEXT_PUBLIC_SITE_NAME=My Portfolio
+
+   # Private variables (server only)
+   DATABASE_URL=your-database-url
+   API_SECRET_KEY=your-secret-key
+   ADMIN_EMAIL=admin@example.com
+   ```
+3. Save the file
+4. Open `src/app/page.tsx`
+5. Add this to display the public variable:
+   ```tsx
+   export default function Home() {
+     return (
+       <main>
+         <h1>Welcome to {process.env.NEXT_PUBLIC_SITE_NAME}</h1>
+         <p>Site URL: {process.env.NEXT_PUBLIC_SITE_URL}</p>
+       </main>
+     )
+   }
+   ```
+6. Verify you can see "My Portfolio" on the page
+7. Check `.gitignore` - verify `.env.local` is listed
+8. Try to access `process.env.DATABASE_URL` in the component - it will be undefined (correct behavior)
+
+**Rules of Environment Variables**:
+- `NEXT_PUBLIC_` prefix = visible in browser
+- No prefix = server-only, secure
+- Never commit `.env.local` to Git (check `.gitignore`)
+- Create `.env.example` with dummy values for team members
+
+**Check Your Understanding**:
+- Why use `NEXT_PUBLIC_` prefix?
+- What happens if you commit `.env.local` to Git?
+- Where do private variables work vs public variables?
+
+**Why This Matters**:
+Environment variables separate configuration from code. You can have different settings for development (local database) vs production (live database) without changing code. More importantly, they keep secrets (API keys, passwords) out of your code repository where others might see them.
+
+**Real-World Usage**:
+```env
+# .env.local (never commit this)
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
+STRIPE_SECRET_KEY=sk_test_...
+NEXTAUTH_SECRET=random-string
+ADMIN_PASSWORD=secure-password
+```
+
+---
+
+### Exercise 6: Setting Up GitHub from Scratch
+
+**Objective**: Create a GitHub account and understand the platform basics.
+
+**Steps**:
+1. Visit [github.com](https://github.com)
+2. Click `Sign up` and complete registration
+3. Verify your email address
+4. Log in to GitHub
+5. Click your profile picture (top right) → `Your repositories`
+6. Click the green `New` button
+7. Create a test repository:
+   - Repository name: `learning-github`
+   - Description: "My first GitHub repository"
+   - Visibility: Public
+   - Check `Add a README file`
+   - Click `Create repository`
+8. Explore the repository page:
+   - Click on `README.md` to view it
+   - Click the pencil icon to edit
+   - Add a line: "I'm learning GitHub!"
+   - Scroll down, add commit message: "Update README"
+   - Click `Commit changes`
+9. View the commit history by clicking the commit count
+
+**Key GitHub Concepts**:
+- **Repository**: Project folder with version history
+- **README.md**: Project description shown on the main page
+- **Commit**: Saved snapshot of changes
+- **Public vs Private**: Who can see your code
+
+**Check Your Understanding**:
+- What's the difference between a repository and a folder?
+- What does a README file do?
+- Why write descriptive commit messages?
+
+**Why This Matters**:
+GitHub is the world's code repository. It's where you store projects, collaborate with others, and showcase your work to employers. Without GitHub, your code lives only on your computer—lose that, lose everything. With GitHub, your code is backed up, shareable, and discoverable.
+
+---
+
+### Exercise 7: Connecting a Windsurf Project to GitHub
+
+**Objective**: Link your local Next.js project to a GitHub repository.
+
+**Prerequisites**: Git installed, GitHub account created
+
+**Steps**:
+1. In Windsurf, open your `portfolio-exercise` project
+2. Open Terminal (`` Ctrl+` ``)
+3. Initialize Git repository:
+   ```bash
+   git init
+   ```
+4. Check status:
+   ```bash
+   git status
+   ```
+   (You'll see many untracked files in red)
+5. Create a `.gitignore` file if it doesn't exist:
+   ```
+   # Dependencies
+   /node_modules
+   /.pnp
+   .pnp.js
+
+   # Testing
+   /coverage
+
+   # Next.js
+   /.next/
+   /out/
+
+   # Production
+   /build
+
+   # Misc
+   .DS_Store
+   *.pem
+
+   # Debug
+   npm-debug.log*
+   yarn-debug.log*
+   yarn-error.log*
+
+   # Local env files
+   .env*.local
+   .env
+
+   # Vercel
+   .vercel
+
+   # TypeScript
+   *.tsbuildinfo
+   next-env.d.ts
+   ```
+6. Stage all files:
+   ```bash
+   git add .
+   ```
+7. Make your first commit:
+   ```bash
+   git commit -m "Initial commit: Next.js project setup"
+   ```
+8. Go to GitHub and create a new repository named `portfolio-exercise` (don't initialize with README)
+9. Copy the repository URL (e.g., `https://github.com/yourusername/portfolio-exercise.git`)
+10. Connect local to remote:
+    ```bash
+    git remote add origin https://github.com/yourusername/portfolio-exercise.git
+    git branch -M main
+    git push -u origin main
+    ```
+11. Refresh your GitHub page - code is now there!
+
+**Daily Git Workflow**:
+```bash
+git status                    # Check what's changed
+git add .                     # Stage all changes
+git commit -m "Description"   # Save with message
+git push                      # Upload to GitHub
+```
+
+**Check Your Understanding**:
+- What's the purpose of `git init`?
+- Why do we need `.gitignore`?
+- What does `git push` do?
+
+**Troubleshooting**:
+- **Error**: "fatal: not a git repository" → Run `git init` first
+- **Error**: "Permission denied" → Check GitHub credentials
+- **Error**: "Updates were rejected" → Run `git pull` first, then push
+
+**Why This Matters**:
+Git is your safety net and collaboration tool. It tracks every change, so you can:
+- Revert mistakes instantly
+- See who changed what and when
+- Work on multiple features simultaneously
+- Collaborate without overwriting each other's work
+- Deploy specific versions to production
+
+---
+
+### Exercise 8: Connecting a GitHub Project to Vercel
+
+**Objective**: Deploy your GitHub repository to Vercel for automatic hosting.
+
+**Prerequisites**: GitHub repository with code, Vercel account
+
+**Steps**:
+1. Visit [vercel.com](https://vercel.com)
+2. Click `Sign Up` → Choose `Continue with GitHub`
+3. Authorize Vercel to access your GitHub account
+4. On Vercel dashboard, click `Add New...` → `Project`
+5. Find your `portfolio-exercise` repository and click `Import`
+6. Configure project:
+   - Framework Preset: Next.js (auto-detected)
+   - Root Directory: `./`
+   - Build Command: `next build` (default)
+   - Output Directory: `.next` (default)
+7. Click `Deploy`
+8. Wait for build (2-3 minutes)
+9. Click the URL (e.g., `portfolio-exercise-xxx.vercel.app`)
+10. Your site is live on the internet!
+
+**Understanding the Integration**:
+- Vercel watches your GitHub repository
+- Every push to `main` triggers automatic redeployment
+- Preview deployments are created for pull requests
+- Your `.env.local` variables need to be added in Vercel dashboard
+
+**Setting Environment Variables on Vercel**:
+1. Go to Vercel Dashboard → Select your project
+2. Click `Settings` tab → `Environment Variables`
+3. Add each variable from your `.env.local`:
+   - Name: `NEXT_PUBLIC_SITE_NAME`
+   - Value: `My Portfolio`
+4. Click `Save`
+5. Redeploy for changes to take effect
+
+**Check Your Understanding**:
+- What happens when you push changes to GitHub?
+- Where do you set production environment variables?
+- How long does deployment typically take?
+
+**Why This Matters**:
+Vercel turns Git pushes into live websites automatically. No manual uploads, no FTP, no server configuration. This enables:
+- Continuous deployment: Code changes → Live site in minutes
+- Preview URLs: Test changes before merging
+- Rollbacks: Revert to previous versions instantly
+- Global CDN: Your site loads fast worldwide
+- HTTPS: Secure connections by default
+
+---
+
+### Exercise 9: Watching GitHub Push Updates to Vercel
+
+**Objective**: Make a code change and watch it automatically deploy.
+
+**Steps**:
+1. Ensure your project is deployed on Vercel from Exercise 8
+2. In Windsurf, open `src/app/page.tsx`
+3. Make a visible change:
+   ```tsx
+   export default function Home() {
+     return (
+       <main className="p-8">
+         <h1 className="text-3xl font-bold text-blue-600">
+           My Portfolio - Updated!
+         </h1>
+         <p>This change was pushed to GitHub and auto-deployed to Vercel.</p>
+       </main>
+     )
+   }
+   ```
+4. Save the file
+5. Open Terminal
+6. Stage and commit:
+   ```bash
+   git add .
+   git commit -m "Update homepage with new heading"
+   ```
+7. Push to GitHub:
+   ```bash
+   git push
+   ```
+8. Watch the magic happen:
+   - Go to your GitHub repository
+   - Click `Actions` tab (see commit being processed)
+   - Go to Vercel dashboard
+   - Click on your project
+   - Watch the build progress indicator
+9. Once build completes (green checkmark), visit your live URL
+10. See your changes live on the internet!
+
+**Understanding the Pipeline**:
+```
+Local Code Change
+    ↓
+git commit & git push
+    ↓
+GitHub receives commit
+    ↓
+Vercel detects change
+    ↓
+Build starts automatically
+    ↓
+Build completes
+    ↓
+Site updated globally
+```
+
+**Check Your Understanding**:
+- How long did the deployment take?
+- Where can you see the build status?
+- What happens if the build fails?
+
+**Exploring Build Logs**:
+1. In Vercel dashboard, click on a deployment
+2. Click `Build Logs`
+3. See every step: installing dependencies, building, optimizing
+4. If something fails, the error appears here
+
+**Why This Matters**:
+This workflow—code, commit, push, auto-deploy—is the modern standard. It eliminates:
+- Manual file uploads
+- "It works on my machine" problems
+- Fear of deploying (easy rollbacks)
+- Downtime during updates
+
+You can make a fix, push it, and have it live in 2 minutes. Clients see updates instantly. Bugs get fixed fast. This velocity is what makes modern web development so powerful.
+
+---
+
+## Exercise Summary: Why Each Step Matters
+
+| Exercise | Skill | Why It Matters |
+|----------|-------|----------------|
+| **1. Workspaces** | Project organization | Saves 5-10 minutes per context switch, preserves mental state |
+| **2. Accessing Projects** | Navigation | Enables managing multiple projects without friction |
+| **3. Local Dev Server** | Development environment | Safe sandbox for experimentation with instant feedback |
+| **4. Project Structure** | Code navigation | Know where everything lives; reference files correctly in prompts |
+| **5. Environment Variables** | Security & configuration | Keep secrets safe, deploy to multiple environments |
+| **6. GitHub Setup** | Version control | Backup, collaboration, history, portfolio showcase |
+| **7. Git Integration** | Code management | Track changes, collaborate, deploy specific versions |
+| **8. Vercel Connection** | Deployment | Turn code into live websites automatically |
+| **9. CI/CD Pipeline** | Modern workflow | Ship changes fast, iterate rapidly, deploy confidently |
+
+**The Big Picture**:
+These exercises teach the complete modern development cycle:
+1. **Plan** → Define what you're building (Exercise 5 planning template)
+2. **Develop** → Build locally with instant feedback (Exercises 1-4)
+3. **Secure** → Manage configuration safely (Exercise 5)
+4. **Version** → Track changes with Git (Exercise 7)
+5. **Store** → Back up on GitHub (Exercise 6)
+6. **Deploy** → Go live with Vercel (Exercise 8)
+7. **Iterate** → Rapid improvement cycle (Exercise 9)
+
+Master these 9 exercises, and you have the foundational skills to build and deploy any web application using AI assistance.
+
+---
+
 ## Conclusion
 
 Vibe-coding with Windsurf, GitHub, and Vercel transforms web development from manual coding to collaborative creation. By mastering AI prompting, you can:
@@ -1325,6 +1824,6 @@ Start your first AI-powered project today!
 
 ---
 
-**Document Version:** 2.2 - AI & Vibe-Coding with Workspace Management and Planning
+**Document Version:** 2.3 - Complete with Hands-On Exercises
 **Last Updated:** March 2025
 
