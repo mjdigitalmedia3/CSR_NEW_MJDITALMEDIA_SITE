@@ -3,13 +3,15 @@
 ## Table of Contents
 1. [What is Vibe-Coding?](#what-is-vibe-coding)
 2. [Setting Up Your Project Folder in Windsurf](#setting-up-your-project-folder-in-windsurf)
-3. [Understanding the Technologies](#understanding-the-technologies)
-4. [The AI Prompting Workflow](#the-ai-prompting-workflow)
-5. [Project Lifecycle with AI](#project-lifecycle-with-ai)
-6. [Advanced AI Prompting Techniques](#advanced-ai-prompting-techniques)
-7. [From Prompt to Production](#from-prompt-to-production)
-8. [Best Practices for AI Collaboration](#best-practices-for-ai-collaboration)
-9. [Troubleshooting with AI](#troubleshooting-with-ai)
+3. [Managing Projects with Workspace Files](#managing-projects-with-workspace-files)
+4. [Project Planning Before Opening Windsurf](#project-planning-before-opening-windsurf)
+5. [Understanding the Technologies](#understanding-the-technologies)
+6. [The AI Prompting Workflow](#the-ai-prompting-workflow)
+7. [Project Lifecycle with AI](#project-lifecycle-with-ai)
+8. [Advanced AI Prompting Techniques](#advanced-ai-prompting-techniques)
+9. [From Prompt to Production](#from-prompt-to-production)
+10. [Best Practices for AI Collaboration](#best-practices-for-ai-collaboration)
+11. [Troubleshooting with AI](#troubleshooting-with-ai)
 
 ---
 
@@ -108,6 +110,351 @@ Before starting your project, you need to create a dedicated folder to store all
    - Create the folder for you
    - Set it as the active workspace
    - Confirm the action
+
+---
+
+## Managing Projects with Workspace Files
+
+### What is a Workspace File?
+
+A workspace file (`.code-workspace`) is a configuration file that saves your project settings, open files, and folder structure. It allows you to quickly reopen entire projects with all your preferences intact.
+
+### Benefits of Using Workspace Files
+
+- **Quick Access**: Open previous projects instantly
+- **Saved State**: Remember open files, terminal history, and settings
+- **Multiple Projects**: Switch between different projects easily
+- **Consistency**: Same environment every time you open the project
+- **Team Sharing**: Share workspace configurations with teammates
+
+### Creating a Workspace File
+
+#### Method 1: Save Current Workspace
+
+1. **Open Your Project Folder**
+   - Ensure your project is loaded in Windsurf
+   - Check the Explorer panel shows your project files
+
+2. **Save Workspace**
+   - Click `File` → `Save Workspace As...`
+   - Navigate to a location (e.g., `Documents/Workspaces/`)
+   - Name the file: `my-project.code-workspace`
+   - Click `Save`
+
+3. **Workspace File Created**
+   - A `.code-workspace` file is saved
+   - Contains paths to your project folders and settings
+
+#### Method 2: Create from Scratch
+
+1. **Create New Workspace**
+   - Click `File` → `Open Workspace from File...`
+   - Or `File` → `New Window` → then add folders
+
+2. **Add Folders to Workspace**
+   - Click `File` → `Add Folder to Workspace`
+   - Select your project folder
+   - Repeat for multiple projects
+
+3. **Save the Workspace**
+   - `File` → `Save Workspace As...`
+   - Name and save the file
+
+### Opening a Previous Project
+
+#### Option 1: Double-Click Workspace File
+
+1. Navigate to where you saved `.code-workspace` file
+2. Double-click the file
+3. Windsurf opens with your complete project setup
+
+#### Option 2: From Within Windsurf
+
+1. Click `File` → `Open Workspace from File...`
+2. Navigate to your `.code-workspace` file
+3. Click `Open`
+4. Your project loads with all previous settings
+
+#### Option 3: Recent Workspaces
+
+1. Click `File` → `Open Recent`
+2. Select from list of recent workspaces
+3. Project opens instantly
+
+### Workspace File Structure
+
+A workspace file looks like this:
+
+```json
+{
+  "folders": [
+    {
+      "path": "my-website"
+    }
+  ],
+  "settings": {
+    "editor.fontSize": 14,
+    "editor.tabSize": 2
+  },
+  "extensions": {
+    "recommendations": [
+      "esbenp.prettier-vscode",
+      "bradlc.vscode-tailwindcss"
+    ]
+  }
+}
+```
+
+### Best Practices for Workspaces
+
+1. **Organize by Client/Project**
+   ```
+   Workspaces/
+   ├── client-a-website.code-workspace
+   ├── personal-blog.code-workspace
+   ├── ecommerce-project.code-workspace
+   └── tutorial-learning.code-workspace
+   ```
+
+2. **Include Multiple Related Folders**
+   - Frontend and backend in same workspace
+   - Shared components library + main project
+
+3. **Version Control Workspaces**
+   - Commit `.code-workspace` files to Git
+   - Team members get same setup
+
+4. **Customize Per Project**
+   - Different color themes for different clients
+   - Specific extensions for project type
+
+---
+
+## Project Planning Before Opening Windsurf
+
+### Why Plan Before Coding?
+
+Planning before opening your IDE helps you:
+- Clarify project goals and requirements
+- Make better use of AI assistance
+- Avoid rework and refactoring
+- Stay focused on the end result
+- Communicate clearly with Cascade
+
+### The Pre-Development Checklist
+
+#### Step 1: Define the Project Purpose
+
+**Questions to Answer:**
+- What problem does this project solve?
+- Who is the target audience?
+- What is the primary goal? (inform, sell, entertain, educate)
+- What makes this project unique?
+
+**Document Your Answers:**
+```
+Project: Portfolio Website
+Purpose: Showcase my work to potential clients
+Audience: Small business owners looking for web design
+Goal: Generate leads through contact form
+Unique Factor: Interactive project gallery with live demos
+```
+
+#### Step 2: Plan the Content Structure
+
+**Outline Your Pages:**
+```
+Home
+├── Hero section (headline, CTA)
+├── Services overview
+├── Featured projects (3-4 items)
+├── Testimonials
+└── Contact CTA
+
+About
+├── Bio/Story
+├── Skills/Tech stack
+├── Experience timeline
+└── Download resume button
+
+Portfolio
+├── Project grid
+├── Filter categories
+├── Project detail modals
+└── Live demo links
+
+Contact
+├── Contact form
+├── Social links
+├── Email/phone info
+└── Location map
+```
+
+**List Required Assets:**
+- Logo (SVG or PNG)
+- Project screenshots (16:9 ratio)
+- Profile photo (square)
+- Resume PDF
+- Favicon
+
+#### Step 3: Define the Design System
+
+**Color Palette:**
+```
+Primary: #DC2626 (Red)
+Secondary: #1F2937 (Dark Gray)
+Accent: #10B981 (Green for success)
+Background: #FFFFFF (White)
+Text: #111827 (Near Black)
+```
+
+**Typography:**
+```
+Headings: Inter, sans-serif
+Body: Inter, sans-serif
+Code: JetBrains Mono, monospace
+```
+
+**Component Ideas:**
+- Navigation: Sticky header, mobile hamburger
+- Buttons: Primary (filled), Secondary (outline)
+- Cards: Rounded corners, subtle shadow
+- Forms: Clean labels, inline validation
+
+#### Step 4: Technical Decisions
+
+**Framework & Tools:**
+- Next.js with App Router
+- TypeScript for type safety
+- Tailwind CSS for styling
+- shadcn/ui for components
+- Framer Motion for animations
+
+**Integrations:**
+- Contact form → Email service (Resend/Formspree)
+- Analytics → Google Analytics or Plausible
+- Hosting → Vercel
+- Domain → Custom domain (optional)
+
+**Data Structure:**
+```typescript
+// Project data structure
+interface Project {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  liveUrl: string;
+  githubUrl?: string;
+}
+```
+
+#### Step 5: Create a Prompt Strategy
+
+**Prepare Initial Prompt:**
+```
+Create a portfolio website for a web developer with:
+- Dark red (#DC2626) primary color
+- Clean, modern design
+- Hero section with "John Doe - Full Stack Developer"
+- Services: Web Design, Development, SEO
+- Portfolio grid with 6 projects
+- Contact form with validation
+- Responsive design
+- Dark mode support
+```
+
+**Plan Follow-Up Prompts:**
+1. "Add animations to the hero section"
+2. "Create project detail modals"
+3. "Add form validation and error handling"
+4. "Optimize for SEO with meta tags"
+5. "Add loading states and transitions"
+
+#### Step 6: Set Up Your Environment
+
+**Before Opening Windsurf:**
+1. ✅ Project folder created
+2. ✅ Planning documents ready
+3. ✅ Assets collected in project folder
+4. ✅ Color palette documented
+5. ✅ Content outline complete
+
+**Organize Assets:**
+```
+my-website/
+├── assets/
+│   ├── logo.svg
+│   ├── profile-photo.jpg
+│   ├── project-1.jpg
+│   ├── project-2.jpg
+│   └── resume.pdf
+└── planning/
+    ├── content-outline.md
+    ├── design-system.md
+    └── prompt-strategy.md
+```
+
+### Using Your Plan with Cascade
+
+**Start with Context:**
+```
+I'm building a portfolio website. Here's my plan:
+- Target: Small business clients
+- Pages: Home, About, Portfolio, Contact
+- Style: Modern, professional, red accent color
+- Features: Dark mode, contact form, project gallery
+
+Let's start by creating the project structure and home page.
+```
+
+**Reference Your Plan:**
+```
+According to my design system (primary color #DC2626), 
+create a navigation component with:
+- Logo on left
+- Links: Home, About, Portfolio, Contact
+- CTA button "Hire Me" in red
+- Mobile hamburger menu
+```
+
+### Quick Reference: Planning Template
+
+```markdown
+# Project Plan: [Name]
+
+## Purpose
+- Problem: [What it solves]
+- Audience: [Who it's for]
+- Goal: [What success looks like]
+
+## Pages & Content
+1. [Page Name]
+   - [Section 1]
+   - [Section 2]
+
+## Design
+- Primary: #[COLOR]
+- Style: [Modern/Classic/Playful]
+- Fonts: [Font names]
+
+## Tech Stack
+- Framework: Next.js
+- Styling: Tailwind CSS
+- Components: shadcn/ui
+- Animations: Framer Motion
+
+## Assets Needed
+- [ ] Logo
+- [ ] Images
+- [ ] Copy/text
+
+## Prompt Strategy
+1. [First prompt]
+2. [Second prompt]
+3. [Third prompt]
+```
 
 ---
 
@@ -978,6 +1325,6 @@ Start your first AI-powered project today!
 
 ---
 
-**Document Version:** 2.1 - AI & Vibe-Coding Focus with Technology Guides
+**Document Version:** 2.2 - AI & Vibe-Coding with Workspace Management and Planning
 **Last Updated:** March 2025
 
