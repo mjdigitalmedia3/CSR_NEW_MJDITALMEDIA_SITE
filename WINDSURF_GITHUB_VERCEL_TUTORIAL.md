@@ -1368,8 +1368,14 @@ Developers often work on 3-5 projects simultaneously. Fast project switching mea
 **Steps**:
 1. Open your `portfolio-exercise` workspace
 2. Open Terminal: Press `` Ctrl+` `` or `Terminal` → `New Terminal`
-3. Verify Node.js: Type `node --version` and press Enter
-4. Create Next.js project: `npx create-next-app@latest .`
+3. Verify Node.js:
+   ```bash
+   node --version
+   ```
+4. Create Next.js project:
+   ```bash
+   npx create-next-app@latest .
+   ```
 5. Answer prompts:
    - TypeScript: Yes
    - ESLint: Yes
@@ -1378,11 +1384,17 @@ Developers often work on 3-5 projects simultaneously. Fast project switching mea
    - App Router: Yes
    - Import alias: No
 6. Wait for installation (2-5 minutes)
-7. Start dev server: `npm run dev`
+7. Start dev server:
+   ```bash
+   npm run dev
+   ```
 8. Open browser to `http://localhost:3000`
 9. Make a small edit to `src/app/page.tsx`
 10. Watch the browser auto-refresh
-11. Stop server: Press `Ctrl+C` in terminal
+11. Stop server:
+    ```bash
+    Ctrl+C
+    ```
 
 **Check Your Understanding**:
 - What URL do you use to view your local site?
