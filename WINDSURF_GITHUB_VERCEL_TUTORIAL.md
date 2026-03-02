@@ -660,6 +660,8 @@ Cascade is your AI pair programmer. Access it:
 5. ITERATE → Refine with follow-up prompts
 ```
 
+![Vibe-Coding Workflow Diagram](docs-assets/vibe-coding-workflow.svg)
+
 ---
 
 ## Optimizing Your Windsurf Workspace for Learning
@@ -712,6 +714,8 @@ The most immersive learning setup:
 2. Resize Cascade panel to take up 40% of screen width
 3. Open built-in browser preview on the right 60%
 4. Your layout: [Cascade Chat | Browser Preview]
+
+![Optimal Learning Workspace Layout](docs-assets/learning-workspace.svg)
 
 **Why This Setup Accelerates Learning:**
 - **Immediate Feedback**: Type a prompt → See AI work → Watch website update
@@ -1718,6 +1722,10 @@ Local development lets you test changes instantly before showing anyone. The dev
 | `package.json` | Dependencies and scripts |
 | `tsconfig.json` | TypeScript settings |
 
+**Visual Overview:**
+
+![Next.js Project Structure](docs-assets/project-structure.svg)
+
 **Hands-On Exploration**:
 1. Open `src/app/page.tsx` - this renders at `/`
 2. Open `src/app/layout.tsx` - notice the `<html>` and `<body>` tags
@@ -1914,6 +1922,8 @@ GitHub is the world's code repository. It's where you store projects, collaborat
     ```
 11. Refresh your GitHub page - code is now there!
 
+![Git Workflow: Local to GitHub](docs-assets/git-workflow.svg)
+
 **Daily Git Workflow**:
 ```bash
 git status                    # Check what's changed
@@ -2034,6 +2044,8 @@ Vercel turns Git pushes into live websites automatically. No manual uploads, no 
 9. Once build completes (green checkmark), visit your live URL
 10. See your changes live on the internet!
 
+![CI/CD Pipeline: Push to Production](docs-assets/cicd-pipeline.svg)
+
 **Understanding the Pipeline**:
 ```
 Local Code Change
@@ -2088,6 +2100,9 @@ You can make a fix, push it, and have it live in 2 minutes. Clients see updates 
 | **9. CI/CD Pipeline** | Modern workflow | Ship changes fast, iterate rapidly, deploy confidently |
 
 **The Big Picture**:
+
+![Complete Development Cycle](docs-assets/development-cycle.svg)
+
 These exercises teach the complete modern development cycle:
 1. **Plan** → Define what you're building (Exercise 5 planning template)
 2. **Develop** → Build locally with instant feedback (Exercises 1-4)

@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
+  <!-- Background -->
+  <rect width="900" height="500" fill="#f8fafc"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="bold" fill="#1e293b">Complete Development Cycle</text>
+  
+  <!-- Phase 1: Plan -->
+  <circle cx="100" cy="120" r="50" fill="#fef3c7" stroke="#f59e0b" stroke-width="3"/>
+  <text x="100" y="115" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" fill="#92400e">1. PLAN</text>
+  <text x="100" y="135" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#92400e">Define goals</text>
+  
+  <!-- Arrow -->
+  <path d="M 160 120 L 200 120" stroke="#cbd5e1" stroke-width="3" marker-end="url(#arrowhead)"/>
+  
+  <!-- Phase 2: Develop -->
+  <circle cx="280" cy="120" r="50" fill="#dbeafe" stroke="#3b82f6" stroke-width="3"/>
+  <text x="280" y="115" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" fill="#1e40af">2. DEVELOP</text>
+  <text x="280" y="135" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#1e40af">AI + Local dev</text>
+  
+  <!-- Arrow -->
+  <path d="M 340 120 L 380 120" stroke="#cbd5e1" stroke-width="3" marker-end="url(#arrowhead)"/>
+  
+  <!-- Phase 3: Secure -->
+  <circle cx="460" cy="120" r="50" fill="#d1fae5" stroke="#10b981" stroke-width="3"/>
+  <text x="460" y="115" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" fill="#065f46">3. SECURE</text>
+  <text x="460" y="135" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#065f46">Env variables</text>
+  
+  <!-- Arrow -->
+  <path d="M 520 120 L 560 120" stroke="#cbd5e1" stroke-width="3" marker-end="url(#arrowhead)"/>
+  
+  <!-- Phase 4: Version -->
+  <circle cx="640" cy="120" r="50" fill="#ede9fe" stroke="#8b5cf6" stroke-width="3"/>
+  <text x="640" y="115" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" fill="#5b21b6">4. VERSION</text>
+  <text x="640" y="135" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#5b21b6">Git tracking</text>
+  
+  <!-- Arrow -->
+  <path d="M 700 120 L 740 120" stroke="#cbd5e1" stroke-width="3" marker-end="url(#arrowhead)"/>
+  
+  <!-- Phase 5: Store -->
+  <circle cx="820" cy="120" r="50" fill="#fce7f3" stroke="#ec4899" stroke-width="3"/>
+  <text x="820" y="115" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" fill="#9d174d">5. STORE</text>
+  <text x="820" y="135" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#9d174d">GitHub backup</text>
+  
+  <!-- Down arrow to second row -->
+  <path d="M 820 180 L 820 220" stroke="#cbd5e1" stroke-width="3" marker-end="url(#arrowhead)"/>
+  
+  <!-- Phase 6: Deploy -->
+  <circle cx="820" cy="280" r="50" fill="#fee2e2" stroke="#ef4444" stroke-width="3"/>
+  <text x="820" y="275" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" fill="#991b1b">6. DEPLOY</text>
+  <text x="820" y="295" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#991b1b">Vercel hosting</text>
+  
+  <!-- Arrow -->
+  <path d="M 760 280 L 720 280" stroke="#cbd5e1" stroke-width="3" marker-end="url(#arrowhead)"/>
+  
+  <!-- Phase 7: Iterate -->
+  <circle cx="640" cy="280" r="50" fill="#ffedd5" stroke="#f97316" stroke-width="3"/>
+  <text x="640" y="275" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" fill="#9a3412">7. ITERATE</text>
+  <text x="640" y="295" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#9a3412">Improve & redeploy</text>
+  
+  <!-- Loop arrow back to Develop -->
+  <path d="M 580 280 L 280 280 L 280 180" stroke="#cbd5e1" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="430" y="270" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b" font-style="italic">Continuous improvement</text>
+  
+  <!-- Tools used in each phase -->
+  <rect x="50" y="380" width="120" height="70" rx="5" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="110" y="405" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#92400e">PLANNING</text>
+  <text x="110" y="422" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#92400e">• Design docs</text>
+  <text x="110" y="435" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#92400e">• Content outline</text>
+  
+  <rect x="190" y="380" width="120" height="70" rx="5" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="250" y="405" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#1e40af">DEVELOPMENT</text>
+  <text x="250" y="422" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#1e40af">• Windsurf + Cascade</text>
+  <text x="250" y="435" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#1e40af">• Next.js localhost</text>
+  
+  <rect x="330" y="380" width="120" height="70" rx="5" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="390" y="405" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#065f46">SECURITY</text>
+  <text x="390" y="422" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#065f46">• .env.local</text>
+  <text x="390" y="435" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#065f46">• Secrets safe</text>
+  
+  <rect x="470" y="380" width="120" height="70" rx="5" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="530" y="405" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#5b21b6">VERSION CONTROL</text>
+  <text x="530" y="422" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#5b21b6">• Git commits</text>
+  <text x="530" y="435" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#5b21b6">• History tracked</text>
+  
+  <rect x="610" y="380" width="120" height="70" rx="5" fill="#fdf2f8" stroke="#ec4899" stroke-width="2"/>
+  <text x="670" y="405" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#9d174d">BACKUP</text>
+  <text x="670" y="422" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#9d174d">• GitHub repo</text>
+  <text x="670" y="435" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#9d174d">• Cloud storage</text>
+  
+  <rect x="750" y="380" width="120" height="70" rx="5" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="810" y="405" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#991b1b">DEPLOYMENT</text>
+  <text x="810" y="422" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#991b1b">• Vercel hosting</text>
+  <text x="810" y="435" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#991b1b">• Auto-deploy</text>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#cbd5e1"/>
+    </marker>
+  </defs>
+  
+  <!-- Timeline at bottom -->
+  <text x="450" y="480" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#475569">From idea to live website — and back again for improvements</text>
+</svg>

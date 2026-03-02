@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8fafc"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" font-weight="bold" fill="#1e293b">The Vibe-Coding Workflow</text>
+  
+  <!-- Boxes -->
+  <!-- Prompt -->
+  <rect x="50" y="80" width="120" height="80" rx="10" fill="#dc2626"/>
+  <text x="110" y="115" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="white">1. PROMPT</text>
+  <text x="110" y="135" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#fecaca">Describe what</text>
+  <text x="110" y="150" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#fecaca">you want</text>
+  
+  <!-- Arrow 1 -->
+  <path d="M 180 120 L 220 120" stroke="#64748b" stroke-width="3" marker-end="url(#arrowhead)"/>
+  
+  <!-- AI Generates -->
+  <rect x="230" y="80" width="120" height="80" rx="10" fill="#2563eb"/>
+  <text x="290" y="115" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="white">2. AI GEN</text>
+  <text x="290" y="135" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#bfdbfe">Cascade creates</text>
+  <text x="290" y="150" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#bfdbfe">code</text>
+  
+  <!-- Arrow 2 -->
+  <path d="M 360 120 L 400 120" stroke="#64748b" stroke-width="3" marker-end="url(#arrowhead)"/>
+  
+  <!-- Review -->
+  <rect x="410" y="80" width="120" height="80" rx="10" fill="#059669"/>
+  <text x="470" y="115" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="white">3. REVIEW</text>
+  <text x="470" y="135" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#bbf7d0">You check the</text>
+  <text x="470" y="150" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#bbf7d0">changes</text>
+  
+  <!-- Arrow 3 -->
+  <path d="M 470 170 L 470 200" stroke="#64748b" stroke-width="3" marker-end="url(#arrowhead)"/>
+  
+  <!-- Test -->
+  <rect x="410" y="210" width="120" height="80" rx="10" fill="#7c3aed"/>
+  <text x="470" y="245" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="white">4. TEST</text>
+  <text x="470" y="265" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#ddd6fe">See if it works</text>
+  <text x="470" y="280" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#ddd6fe">locally</text>
+  
+  <!-- Arrow 4 -->
+  <path d="M 400 250 L 360 250" stroke="#64748b" stroke-width="3" marker-end="url(#arrowhead)"/>
+  
+  <!-- Iterate -->
+  <rect x="230" y="210" width="120" height="80" rx="10" fill="#ea580c"/>
+  <text x="290" y="245" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="white">5. ITERATE</text>
+  <text x="290" y="265" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#fed7aa">Refine with</text>
+  <text x="290" y="280" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#fed7aa">follow-ups</text>
+  
+  <!-- Loop arrow back to top -->
+  <path d="M 230 250 L 180 250 L 180 170 L 170 170" stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="200" y="200" font-family="system-ui, sans-serif" font-size="11" fill="#64748b" font-style="italic">Not right?</text>
+  
+  <!-- Deploy path -->
+  <path d="M 530 120 L 600 120" stroke="#64748b" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="565" y="110" font-family="system-ui, sans-serif" font-size="11" fill="#059669" font-weight="bold">Looks good!</text>
+  
+  <!-- Deploy -->
+  <rect x="610" y="80" width="140" height="80" rx="10" fill="#0f172a"/>
+  <text x="680" y="115" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="white">6. DEPLOY</text>
+  <text x="680" y="135" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">Push to GitHub</text>
+  <text x="680" y="150" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">→ Vercel</text>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+  </defs>
+  
+  <!-- Bottom note -->
+  <text x="400" y="350" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#475569" font-style="italic">Prompt → AI Generates → You Review → Iterate → Push → Auto-Deploy</text>
+</svg>

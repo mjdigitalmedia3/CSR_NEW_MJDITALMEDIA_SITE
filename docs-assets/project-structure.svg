@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <!-- Background -->
+  <rect width="800" height="450" fill="#f8fafc"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="bold" fill="#1e293b">Next.js Project Structure</text>
+  
+  <!-- Folder tree -->
+  <g transform="translate(100, 80)">
+    <!-- Root folder -->
+    <rect x="0" y="0" width="200" height="30" rx="5" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1"/>
+    <text x="10" y="20" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#475569">📁 my-project/</text>
+    
+    <!-- src folder -->
+    <rect x="20" y="40" width="180" height="25" rx="5" fill="#dbeafe" stroke="#60a5fa" stroke-width="1"/>
+    <text x="30" y="57" font-family="system-ui, sans-serif" font-size="13" fill="#1e40af">📁 src/</text>
+    
+    <!-- app folder -->
+    <rect x="40" y="70" width="160" height="25" rx="5" fill="#dbeafe" stroke="#60a5fa" stroke-width="1"/>
+    <text x="50" y="87" font-family="system-ui, sans-serif" font-size="13" fill="#1e40af">📁 app/</text>
+    
+    <!-- page.tsx -->
+    <rect x="60" y="100" width="140" height="22" rx="3" fill="#fff" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="70" y="115" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">📄 page.tsx</text>
+    <text x="140" y="115" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">Home page ( / )</text>
+    
+    <!-- layout.tsx -->
+    <rect x="60" y="125" width="140" height="22" rx="3" fill="#fff" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="70" y="140" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">📄 layout.tsx</text>
+    <text x="140" y="140" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">Root layout</text>
+    
+    <!-- globals.css -->
+    <rect x="60" y="150" width="140" height="22" rx="3" fill="#fff" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="70" y="165" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">📄 globals.css</text>
+    <text x="140" y="165" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">Global styles</text>
+    
+    <!-- about folder -->
+    <rect x="40" y="180" width="160" height="25" rx="5" fill="#dbeafe" stroke="#60a5fa" stroke-width="1"/>
+    <text x="50" y="197" font-family="system-ui, sans-serif" font-size="13" fill="#1e40af">📁 about/</text>
+    
+    <!-- about/page.tsx -->
+    <rect x="60" y="210" width="140" height="22" rx="3" fill="#fff" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="70" y="225" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">📄 page.tsx</text>
+    <text x="140" y="225" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">About page ( /about )</text>
+    
+    <!-- components folder -->
+    <rect x="20" y="245" width="180" height="25" rx="5" fill="#dcfce7" stroke="#4ade80" stroke-width="1"/>
+    <text x="30" y="262" font-family="system-ui, sans-serif" font-size="13" fill="#166534">📁 components/</text>
+    
+    <!-- Button.tsx -->
+    <rect x="40" y="275" width="160" height="22" rx="3" fill="#fff" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="50" y="290" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">📄 Button.tsx</text>
+    <text x="130" y="290" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">Reusable UI</text>
+    
+    <!-- public folder -->
+    <rect x="20" y="310" width="180" height="25" rx="5" fill="#fef3c7" stroke="#fbbf24" stroke-width="1"/>
+    <text x="30" y="327" font-family="system-ui, sans-serif" font-size="13" fill="#92400e">📁 public/</text>
+    
+    <!-- images -->
+    <rect x="40" y="340" width="160" height="22" rx="3" fill="#fff" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="50" y="355" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">🖼️ images/</text>
+    <text x="130" y="355" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">Static assets</text>
+    
+    <!-- Config files -->
+    <rect x="0" y="380" width="200" height="22" rx="3" fill="#f3e8ff" stroke="#c084fc" stroke-width="1"/>
+    <text x="10" y="395" font-family="system-ui, sans-serif" font-size="12" fill="#7c3aed">⚙️ next.config.js</text>
+    <text x="120" y="395" font-family="system-ui, sans-serif" font-size="10" fill="#a855f7">Configuration</text>
+    
+    <rect x="0" y="405" width="200" height="22" rx="3" fill="#f3e8ff" stroke="#c084fc" stroke-width="1"/>
+    <text x="10" y="420" font-family="system-ui, sans-serif" font-size="12" fill="#7c3aed">⚙️ package.json</text>
+    <text x="120" y="420" font-family="system-ui, sans-serif" font-size="10" fill="#a855f7">Dependencies</text>
+  </g>
+  
+  <!-- Legend -->
+  <g transform="translate(450, 100)">
+    <text x="0" y="0" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="#1e293b">📖 Key Concepts</text>
+    
+    <rect x="0" y="20" width="280" height="80" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="10" y="45" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#1e40af">App Router (app/)</text>
+    <text x="10" y="65" font-family="system-ui, sans-serif" font-size="11" fill="#3b82f6">• Folders = URL routes</text>
+    <text x="10" y="80" font-family="system-ui, sans-serif" font-size="11" fill="#3b82f6">• page.tsx = page content</text>
+    <text x="10" y="95" font-family="system-ui, sans-serif" font-size="11" fill="#3b82f6">• layout.tsx = shared wrapper</text>
+    
+    <rect x="0" y="110" width="280" height="60" rx="8" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+    <text x="10" y="135" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#166534">Components (components/)</text>
+    <text x="10" y="155" font-family="system-ui, sans-serif" font-size="11" fill="#16a34a">Reusable building blocks</text>
+    
+    <rect x="0" y="180" width="280" height="60" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+    <text x="10" y="205" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#92400e">Public (public/)</text>
+    <text x="10" y="225" font-family="system-ui, sans-serif" font-size="11" fill="#b45309">Static files served as-is</text>
+    
+    <rect x="0" y="250" width="280" height="50" rx="8" fill="#faf5ff" stroke="#a855f7" stroke-width="2"/>
+    <text x="10" y="275" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#7c3aed">Config Files</text>
+    <text x="10" y="290" font-family="system-ui, sans-serif" font-size="11" fill="#9333ea">Control project behavior</text>
+  </g>
+  
+  <!-- Bottom tip -->
+  <rect x="50" y="410" width="700" height="30" rx="5" fill="#f1f5f9"/>
+  <text x="400" y="428" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#475569">💡 Tip: In Next.js, you don't configure routes manually — folders in app/ automatically become URLs</text>
+</svg>
