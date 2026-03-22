@@ -40,7 +40,7 @@ export default function Checkout() {
         throw new Error("Stripe failed to initialize");
       }
 
-      const { error: redirectError } = await stripe.redirectToCheckout({ sessionId });
+      const { error: redirectError } = await (stripe as any).redirectToCheckout({ sessionId });
       
       if (redirectError) {
         throw new Error(redirectError.message);
