@@ -475,8 +475,8 @@ export default function Home() {
                 <Link href="/submit" className="block text-sm text-muted-foreground hover:text-primary" data-testid="link-footer-get-started">
                   Get Started
                 </Link>
-                <Link href="/dashboard" className="block text-sm text-muted-foreground hover:text-primary" data-testid="link-footer-dashboard">
-                  Client Dashboard
+                <Link href="/products" className="block text-sm text-muted-foreground hover:text-primary" data-testid="link-footer-products">
+                  View Packages
                 </Link>
               </div>
             </div>
