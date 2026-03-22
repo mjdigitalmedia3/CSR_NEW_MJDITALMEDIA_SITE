@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSession, signOut } from "next-auth/react";
-import { UserPlus, FileText, FolderOpen, Settings, Briefcase, LogIn, LogOut, MessageCircle } from "lucide-react";
+import { UserPlus, FileText, FolderOpen, Settings, Briefcase, LogIn, LogOut, MessageCircle, ShoppingBag, Package, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./theme-toggle";
 
@@ -9,12 +9,15 @@ const publicNavItems = [
   { href: "/", label: "Home", icon: FileText },
   { href: "/services", label: "Services", icon: Briefcase },
   { href: "/portfolio", label: "Portfolio", icon: FolderOpen },
+  { href: "/products", label: "Products", icon: ShoppingBag },
   { href: "/contact", label: "Contact", icon: MessageCircle },
   { href: "/submit", label: "New Lead", icon: UserPlus },
 ];
 
 const adminNavItems = [
   { href: "/portfolio-manager", label: "Manage Portfolio", icon: Settings },
+  { href: "/admin/products", label: "Products", icon: Package },
+  { href: "/admin/upsells", label: "Upsells", icon: Sparkles },
 ];
 
 export function Header() {

@@ -6,6 +6,7 @@ import { queryClient } from "@/lib/queryClient";
 import { ThemeProvider } from "@/lib/theme";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
+import { CartProvider } from "@/contexts/cart-context";
 import { Header } from "@/components/header";
 
 export default function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
@@ -14,13 +15,15 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
       <QueryClientProvider client={queryClient}>
         <ThemeProvider>
           <TooltipProvider>
-            <div className="min-h-screen bg-background">
-              <Header />
-              <main>
-                <Component {...pageProps} />
-              </main>
-            </div>
-            <Toaster />
+            <CartProvider>
+              <div className="min-h-screen bg-background">
+                <Header />
+                <main>
+                  <Component {...pageProps} />
+                </main>
+              </div>
+              <Toaster />
+            </CartProvider>
           </TooltipProvider>
         </ThemeProvider>
       </QueryClientProvider>

@@ -63,3 +63,37 @@ export const insertClientSchema = z.object({
 });
 
 export type InsertClient = z.infer<typeof insertClientSchema>;
+
+// Product & Upsell Schemas
+export const productSchema = z.object({
+  id: z.string().optional(),
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  description: z.string().min(10, "Description must be at least 10 characters"),
+  price: z.number().min(0, "Price must be positive"),
+  features: z.array(z.string()).min(1, "Please add at least one feature"),
+  stripePriceId: z.string().optional(),
+  isActive: z.boolean().default(true),
+  sortOrder: z.number().default(0),
+});
+
+export const upsellFeatureSchema = z.object({
+  id: z.string().optional(),
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  description: z.string(),
+  price: z.number().min(0, "Price must be positive"),
+  category: z.enum(["CRM", "Lead Management", "Marketing", "Analytics", "Other"]),
+  requiresWebApp: z.boolean().default(false),
+  isActive: z.boolean().default(true),
+  stripePriceId: z.string().optional(),
+});
+
+export const cartItemSchema = z.object({
+  productId: z.string(),
+  product: productSchema,
+  selectedUpsells: z.array(upsellFeatureSchema),
+  totalPrice: z.number(),
+});
+
+export type Product = z.infer<typeof productSchema>;
+export type UpsellFeature = z.infer<typeof upsellFeatureSchema>;
+export type CartItem = z.infer<typeof cartItemSchema>;
