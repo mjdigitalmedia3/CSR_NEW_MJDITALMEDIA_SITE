@@ -15,34 +15,34 @@ export default function AboutCEO() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
               About the CEO
             </h1>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-muted-foreground mb-8">
               A creative journey from Cleveland to digital innovation
             </p>
+            
+            {/* Photo */}
+            <div className="flex flex-col items-center">
+              <div className="relative">
+                <img
+                  src="/assets/mario-ceo.jpeg"
+                  alt="Mario Jackson - CEO"
+                  className="w-64 h-64 object-cover rounded-2xl shadow-2xl border-4 border-primary/20"
+                />
+                <div className="absolute -bottom-3 -right-3 bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                  CEO & Founder
+                </div>
+              </div>
+              <div className="mt-6 text-center">
+                <h2 className="text-2xl font-bold text-foreground">Mario Jackson</h2>
+                <p className="text-lg text-muted-foreground mt-1">CEO & Founder</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Bio Section */}
-      <section className="py-16 lg:py-24">
+      <section className="py-8 lg:py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Photo */}
-          <div className="flex flex-col items-center mb-12">
-            <div className="relative">
-              <img
-                src="/assets/mario-ceo.jpeg"
-                alt="Mario Jackson - CEO"
-                className="w-64 h-64 object-cover rounded-2xl shadow-2xl border-4 border-primary/20"
-              />
-              <div className="absolute -bottom-3 -right-3 bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
-                CEO & Founder
-              </div>
-            </div>
-            <div className="mt-6 text-center">
-              <h2 className="text-2xl font-bold text-foreground">Mario Jackson</h2>
-              <p className="text-lg text-muted-foreground mt-1">CEO & Founder</p>
-            </div>
-          </div>
-
           <div className="space-y-12">
             
             {/* Introduction */}
