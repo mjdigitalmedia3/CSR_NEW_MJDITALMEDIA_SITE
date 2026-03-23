@@ -29,7 +29,7 @@ export default function AboutCEO() {
           <div className="flex justify-center mb-12">
             <div className="relative">
               <img
-                src="/assets/mario-ceo.jpg"
+                src="/assets/mario-ceo.jpeg"
                 alt="Mario Jackson - CEO"
                 className="w-64 h-64 object-cover rounded-2xl shadow-2xl border-4 border-primary/20"
               />
