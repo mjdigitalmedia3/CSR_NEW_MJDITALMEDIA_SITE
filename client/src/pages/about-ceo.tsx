@@ -26,7 +26,7 @@ export default function AboutCEO() {
       <section className="py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Photo */}
-          <div className="flex justify-center mb-12">
+          <div className="flex flex-col items-center mb-12">
             <div className="relative">
               <img
                 src="/assets/mario-ceo.jpeg"
@@ -36,6 +36,10 @@ export default function AboutCEO() {
               <div className="absolute -bottom-3 -right-3 bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
                 CEO & Founder
               </div>
+            </div>
+            <div className="mt-6 text-center">
+              <h2 className="text-2xl font-bold text-foreground">Mario Jackson</h2>
+              <p className="text-lg text-muted-foreground mt-1">CEO & Founder</p>
             </div>
           </div>
 
