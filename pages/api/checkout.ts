@@ -1,13 +1,28 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+
+// Silent fail if Stripe is not configured
+if (!stripeSecretKey) {
+  console.warn('Stripe not configured: STRIPE_SECRET_KEY missing');
+}
+
+const stripe = stripeSecretKey ? new Stripe(stripeSecretKey, {
   apiVersion: '2026-02-25.clover',
-});
+}) : null;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
+  }
+
+  // Return graceful error if Stripe not configured
+  if (!stripe) {
+    return res.status(503).json({ 
+      message: 'Checkout is temporarily unavailable. Please contact us directly to complete your order.',
+      code: 'STRIPE_NOT_CONFIGURED'
+    });
   }
 
   try {
