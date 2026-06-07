@@ -7,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
+  const apiKey = process.env.RESEND_API_KEY?.trim().replace(/^["']|["']$/g, '');
   if (!apiKey) {
     return res.status(500).json({ message: 'RESEND_API_KEY is not configured' });
   }

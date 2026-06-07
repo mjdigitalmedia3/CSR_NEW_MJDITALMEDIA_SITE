@@ -20,9 +20,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const toEmail = process.env.ADMIN_EMAIL || 'admin@mjdigitalmedia.com';
 
   // Try Resend first
-  if (process.env.RESEND_API_KEY) {
+  const resendApiKey = process.env.RESEND_API_KEY?.trim().replace(/^["']|["']$/g, '');
+  if (resendApiKey) {
     try {
-      const resend = new Resend(process.env.RESEND_API_KEY);
+      const resend = new Resend(resendApiKey);
       const { data, error: sendError } = await resend.emails.send({
         from: `${fromName} <${resendFromEmail}>`,
         to: [toEmail],
