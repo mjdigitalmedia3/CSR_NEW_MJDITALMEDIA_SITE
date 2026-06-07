@@ -14,12 +14,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const resend = new Resend(apiKey);
-    const fromEmail = process.env.SMTP_FROM_EMAIL || 'onboarding@resend.dev';
+    const fromEmail = 'noreply@mjdigitalmedia3.com';
     const fromName = process.env.SMTP_FROM_NAME || process.env.RESEND_FROM_NAME || 'MJ Digital Media';
 
     const { data, error } = await resend.emails.send({
       from: `${fromName} <${fromEmail}>`,
-      to: ['brianstittsr@gmail.com'],
+      to: ['brianestittsr@outlook.com'],
       subject: 'Test Email - MJ Digital Media',
       html: `
         <h2>Test Email</h2>

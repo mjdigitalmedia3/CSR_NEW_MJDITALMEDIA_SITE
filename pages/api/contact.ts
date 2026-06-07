@@ -14,7 +14,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(400).json({ message: 'Name, email, and message are required.' });
   }
 
-  const fromEmail = process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER || 'onboarding@resend.dev';
+  const resendFromEmail = process.env.RESEND_FROM_EMAIL || 'noreply@mjdigitalmedia3.com';
+  const smtpFromEmail = process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER || 'onboarding@resend.dev';
   const fromName = process.env.SMTP_FROM_NAME || process.env.RESEND_FROM_NAME || 'MJ Digital Media';
   const toEmail = process.env.ADMIN_EMAIL || 'admin@mjdigitalmedia.com';
 
@@ -23,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
       const resend = new Resend(process.env.RESEND_API_KEY);
       const { data, error: sendError } = await resend.emails.send({
-        from: `${fromName} <${fromEmail}>`,
+        from: `${fromName} <${resendFromEmail}>`,
         to: [toEmail],
         replyTo: email,
         subject: `Contact Form: ${subject || 'New Message'}`,
@@ -74,7 +75,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       });
 
       const info = await transporter.sendMail({
-        from: `"${fromName}" <${fromEmail}>`,
+        from: `"${fromName}" <${smtpFromEmail}>`,
         to: toEmail,
         replyTo: email,
         subject: `Contact Form: ${subject || 'New Message'}`,
