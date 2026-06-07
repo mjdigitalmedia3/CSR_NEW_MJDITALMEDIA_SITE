@@ -11,5 +11,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     nextauthSecret: nextauthSecret ? `SET (length: ${nextauthSecret.length})` : 'NOT SET',
     nextauthUrl: nextauthUrl || 'NOT SET',
     adminEmail: adminEmail || 'NOT SET',
+    timestamp: new Date().toISOString(),
   });
 }
